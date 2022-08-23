@@ -1,5 +1,5 @@
 import React, { lazy, FC } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const Home = lazy(() => import('./pages/Home/index'));
 
@@ -10,16 +10,17 @@ type Props = {
 
 const CustomRouter = () => {
   return (
-    <Routes>
-      <Route path='/' element={<Home />} />
-    </Routes>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home />} />
+      </Routes>
+    </Router>
   );
 };
 
 function App() {
   return (
     <div className='App'>
-      <Home />
       <CustomRouter />
     </div>
   );
