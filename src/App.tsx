@@ -8,25 +8,21 @@ type Props = {
   path: any;
 };
 
-const CustomRoute: FC<Props> = ({ component: Component, path }) => {
-  return (
-    <Route
-      path={path}
-      element={(props: any): any => <Component {...props} />}
-    />
-  );
-};
-
 const CustomRouter = () => {
   return (
     <Routes>
-      <CustomRoute path={'/'} component={Home} />
+      <Route path='/' element={<Home />} />
     </Routes>
   );
 };
 
 function App() {
-  return <div className='App'>Boiler Plate</div>;
+  return (
+    <div className='App'>
+      <Home />
+      <CustomRouter />
+    </div>
+  );
 }
 
 export default App;
