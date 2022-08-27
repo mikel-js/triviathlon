@@ -7,6 +7,7 @@ import general_knowledge from '../../assets/images/general_knowledge.jpg';
 import basketball from '../../assets/images/basketball.jpg';
 import dogs from '../../assets/images/dogs.jpg';
 import geography from '../../assets/images/geography.jpg';
+import triviathlonLogo from '../../assets/images/triviathlon.png';
 
 export type categoryObject = { imgSrc: string; title: string; text: string };
 
@@ -17,13 +18,20 @@ const Section = styled.div`
 
 const StyledHeading = styled.div`
   background-color: ${color.ORANGE1};
+  width: 100%;
   height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 48px;
 `;
 
 const StyledContent = styled.div`
   background-color: ${color.YELLOW1};
   height: 70vh;
 `;
+
+const StyledImg = styled.img``;
 
 const index = () => {
   const imagesMap = [
@@ -43,7 +51,7 @@ const index = () => {
   return (
     <Section>
       <StyledHeading>
-        <h1>Triviathlon</h1>
+        <StyledImg src={triviathlonLogo} />
         <p>Test your mental endurance</p>
       </StyledHeading>
       <StyledContent>
