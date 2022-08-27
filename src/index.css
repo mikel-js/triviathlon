@@ -1,4 +1,26 @@
+
+
+@font-face {
+	font-family: ubuntu;
+	src: url('./assets/fonts/Ubuntu-Regular.ttf') format('truetype');
+	font-style: normal;
+}
+
+@font-face {
+	font-family: ubuntu;
+	src: url('./assets/fonts/Ubuntu-Bold.ttf') format('truetype');
+	font-style: normal;
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: ubuntu;
+	src: url('./assets/fonts/Ubuntu-Italic.ttf') format('truetype');
+	font-style: italic;
+}
+
 * {
 	box-sizing: border-box;
   margin: 0;
+  font-family: ubuntu, Poppins, Lato, sans-serif ;
 }
