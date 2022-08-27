@@ -31,7 +31,10 @@ const StyledContent = styled.div`
   height: 70vh;
 `;
 
-const StyledImg = styled.img``;
+const StyledImg = styled.img`
+  height: 150px;
+  width: 500px;
+`;
 
 const index = () => {
   const imagesMap = [
@@ -52,7 +55,7 @@ const index = () => {
     <Section>
       <StyledHeading>
         <StyledImg src={triviathlonLogo} />
-        <p>Test your mental endurance</p>
+        <h1>Test your mental endurance</h1>
       </StyledHeading>
       <StyledContent>
         <Marquee pauseOnHover gradient={false} speed={100}>
