@@ -8,6 +8,8 @@ import basketball from '../../assets/images/basketball.jpg';
 import dogs from '../../assets/images/dogs.jpg';
 import geography from '../../assets/images/geography.jpg';
 
+export type categoryObject = { imgSrc: string; title: string; text: string };
+
 const Section = styled.div`
   min-height: 100%;
   height: 100vh;
@@ -25,10 +27,18 @@ const StyledContent = styled.div`
 
 const index = () => {
   const imagesMap = [
-    { imgSrc: general_knowledge, title: 'General Knowledge' },
-    { imgSrc: basketball, title: 'Sports' },
-    { imgSrc: dogs, title: 'Animals' },
-    { imgSrc: geography, title: 'Geography' },
+    {
+      imgSrc: general_knowledge,
+      title: 'General Knowledge',
+      text: 'Knowledge is power',
+    },
+    { imgSrc: basketball, title: 'Sports', text: 'Play like a champion' },
+    { imgSrc: dogs, title: 'Animals', text: 'We all love animals' },
+    {
+      imgSrc: geography,
+      title: 'Geography',
+      text: 'No boundaries with Geography',
+    },
   ];
   return (
     <Section>
@@ -38,11 +48,9 @@ const index = () => {
       </StyledHeading>
       <StyledContent>
         <Marquee pauseOnHover gradient={false} speed={100}>
-          {imagesMap.map(
-            ({ imgSrc, title }: { imgSrc: string; title: string }) => (
-              <Cards imgSrc={imgSrc} imgAlt={title} />
-            )
-          )}
+          {imagesMap.map(({ imgSrc, title, text }: categoryObject) => (
+            <Cards imgSrc={imgSrc} title={title} text={text} />
+          ))}
         </Marquee>
       </StyledContent>
     </Section>
