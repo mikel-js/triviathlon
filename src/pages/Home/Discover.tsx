@@ -15,10 +15,35 @@ const StyledDiscovery = styled.div`
 const StyledLeftSection = styled.div`
   background-color: ${color.BLUE1};
   padding: 48px;
+
+  > h1 {
+  }
 `;
 
 const StyledRightSection = styled.div`
   background-color: ${color.PINK1};
+`;
+
+const StyledCategories = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+`;
+
+const StyledIconContainer = styled.div`
+  display: flex;
+  padding: 1vw 2.5vw;
+  cursor: pointer;
+  border-radius: 20px;
+
+  &:hover {
+    background-color: red;
+  }
+`;
+
+const StyledText = styled.p`
+  font-size: 60px;
+  margin-left: 24px;
 `;
 
 const StyledImg = styled.img`
@@ -26,11 +51,21 @@ const StyledImg = styled.img`
   width: 4.8rem;
 `;
 
-const Discover = ({ icons }: { icons: {} }) => {
+const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
   return (
     <StyledDiscovery>
       <StyledLeftSection>
         <h1>Get a glimpse of the trivia</h1>
+        <StyledCategories>
+          {icons.map(({ imgSrc, text }) => {
+            return (
+              <StyledIconContainer>
+                <StyledImg src={imgSrc} alt={text} />
+                <StyledText>{text}</StyledText>
+              </StyledIconContainer>
+            );
+          })}
+        </StyledCategories>
       </StyledLeftSection>
       <StyledRightSection>Right</StyledRightSection>
     </StyledDiscovery>

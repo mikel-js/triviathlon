@@ -37,12 +37,12 @@ export const images = [
   },
 ];
 
-export const icons = {
-  artIcon,
-  basketballIcon,
-  bookIcon,
-  dogIcon,
-  geographyIcon,
-  vehicleIcon,
-  zeusIcon,
-};
+export const icons = [
+  { imgSrc: artIcon, text: 'Arts' },
+  { imgSrc: basketballIcon, text: 'Sports' },
+  { imgSrc: bookIcon, text: 'General Knowledge' },
+  { imgSrc: dogIcon, text: 'Animals' },
+  { imgSrc: geographyIcon, text: 'Geography' },
+  { imgSrc: vehicleIcon, text: 'Vehicles' },
+  { imgSrc: zeusIcon, text: 'Mythology' },
+];
