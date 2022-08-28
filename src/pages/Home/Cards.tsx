@@ -12,7 +12,7 @@ const StyledCard = styled.div`
 
 const StyledImg = styled.img`
   aspect-ratio: 1 / 1;
-  width: 20vw;
+  width: 25vw;
 `;
 const Cards = ({ imgSrc, title, text }: categoryObject) => {
   return (
