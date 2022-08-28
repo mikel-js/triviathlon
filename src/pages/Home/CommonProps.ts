@@ -2,7 +2,7 @@ import general_knowledge from '../../assets/images/general_knowledge.jpg';
 import basketball from '../../assets/images/basketball.jpg';
 import dogs from '../../assets/images/dogs.jpg';
 import geography from '../../assets/images/geography.jpg';
-import art from '../../assets/images/geography.jpg';
+import art from '../../assets/icons/art.png';
 
 export const imagesMap = [
   {
@@ -31,4 +31,6 @@ export const imagesMap = [
   },
 ];
 
-const icons = {};
+const icons = {
+  art,
+};

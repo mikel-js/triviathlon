@@ -3,7 +3,7 @@ import Marquee from 'react-fast-marquee';
 import styled from 'styled-components';
 import { color } from '../../constants';
 import Cards from './Cards';
-import { imagesMap } from './Images';
+import { imagesMap } from './CommonProps';
 import triviathlonLogo from '../../assets/images/triviathlon.png';
 import Discover from './Discover';
 
