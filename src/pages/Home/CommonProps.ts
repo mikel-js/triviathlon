@@ -2,9 +2,15 @@ import general_knowledge from '../../assets/images/general_knowledge.jpg';
 import basketball from '../../assets/images/basketball.jpg';
 import dogs from '../../assets/images/dogs.jpg';
 import geography from '../../assets/images/geography.jpg';
-import art from '../../assets/icons/art.png';
+import artIcon from '../../assets/icons/art.png';
+import basketballIcon from '../../assets/icons/basketball.png';
+import bookIcon from '../../assets/icons/book.png';
+import dogIcon from '../../assets/icons/dog.png';
+import geographyIcon from '../../assets/icons/navigation.png';
+import vehicleIcon from '../../assets/icons/vehicle.png';
+import zeusIcon from '../../assets/icons/zeus.png';
 
-export const imagesMap = [
+export const images = [
   {
     imgSrc: general_knowledge,
     title: 'General Knowledge',
@@ -31,6 +37,12 @@ export const imagesMap = [
   },
 ];
 
-const icons = {
-  art,
+export const icons = {
+  artIcon,
+  basketballIcon,
+  bookIcon,
+  dogIcon,
+  geographyIcon,
+  vehicleIcon,
+  zeusIcon,
 };

@@ -3,11 +3,9 @@ import Marquee from 'react-fast-marquee';
 import styled from 'styled-components';
 import { color } from '../../constants';
 import Cards from './Cards';
-import { imagesMap } from './CommonProps';
+import { images, icons } from './CommonProps';
 import triviathlonLogo from '../../assets/images/triviathlon.png';
 import Discover from './Discover';
-
-export type categoryObject = { imgSrc: string; title: string; text: string };
 
 const Section = styled.div``;
 
@@ -54,13 +52,13 @@ const index = () => {
         <StyledContent>
           <StyledTitle>Check this out!</StyledTitle>
           <Marquee pauseOnHover gradient={false} speed={100}>
-            {imagesMap.map(({ imgSrc, title, text }: categoryObject) => (
+            {images.map(({ imgSrc, title, text }) => (
               <Cards imgSrc={imgSrc} title={title} text={text} />
             ))}
           </Marquee>
         </StyledContent>
       </Section>
-      <Discover />
+      <Discover icons={icons} />
     </Fragment>
   );
 };

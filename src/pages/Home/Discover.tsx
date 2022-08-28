@@ -21,7 +21,12 @@ const StyledRightSection = styled.div`
   background-color: ${color.PINK1};
 `;
 
-const Discover = () => {
+const StyledImg = styled.img`
+  aspect-ratio: 1 / 1;
+  width: 4.8rem;
+`;
+
+const Discover = ({ icons }: { icons: {} }) => {
   return (
     <StyledDiscovery>
       <StyledLeftSection>

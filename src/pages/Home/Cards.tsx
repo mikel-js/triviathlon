@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { categoryObject } from '.';
+
+type categoryObject = { imgSrc: string; title: string; text: string };
 
 const StyledCard = styled.div`
   margin: 20px 40px;
@@ -14,6 +15,7 @@ const StyledImg = styled.img`
   aspect-ratio: 1 / 1;
   width: 25vw;
 `;
+
 const Cards = ({ imgSrc, title, text }: categoryObject) => {
   return (
     <StyledCard>
