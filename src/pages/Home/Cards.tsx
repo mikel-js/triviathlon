@@ -11,8 +11,8 @@ const StyledCard = styled.div`
 `;
 
 const StyledImg = styled.img`
-  width: 600px;
-  height: 400px;
+  aspect-ratio: 1 / 1;
+  width: 20vw;
 `;
 const Cards = ({ imgSrc, title, text }: categoryObject) => {
   return (

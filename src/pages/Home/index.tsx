@@ -50,6 +50,18 @@ const index = () => {
       title: 'Geography',
       text: 'No boundaries with Geography',
     },
+    {
+      imgSrc: general_knowledge,
+      title: 'General Knowledge',
+      text: 'Knowledge is power',
+    },
+    { imgSrc: basketball, title: 'Sports', text: 'Play like a champion' },
+    { imgSrc: dogs, title: 'Animals', text: 'We all love animals' },
+    {
+      imgSrc: geography,
+      title: 'Geography',
+      text: 'No boundaries with Geography',
+    },
   ];
   return (
     <Section>
