@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { color } from '../../constants';
 
@@ -30,15 +30,19 @@ const StyledCategories = styled.div`
   margin-top: 2em;
 `;
 
-const StyledIconContainer = styled.div`
+const StyledIconContainer = styled.div<{ isActive: boolean }>`
   display: flex;
   padding: 1vw 2.5vw;
   cursor: pointer;
   border-radius: 20px;
 
   &:hover {
-    background-color: red;
+    padding-left: 3.5vw;
+    ${({ isActive }) => !isActive && `background-color: ${color.RED2};`}
   }
+
+  ${({ isActive }) =>
+    isActive && `background-color: ${color.RED1}; padding-left: 3.5vw;`}
 `;
 
 const StyledText = styled.p`
@@ -52,14 +56,24 @@ const StyledImg = styled.img`
 `;
 
 const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
+  const [activeCategory, setActiveCategory] = useState(0);
+
+  const onCategorySelect = (num: number) => {
+    setActiveCategory(num);
+  };
   return (
     <StyledDiscovery>
       <StyledLeftSection>
         <h1>Get a glimpse of the trivia</h1>
         <StyledCategories>
-          {icons.map(({ imgSrc, text }) => {
+          {icons.map(({ imgSrc, text }, index) => {
+            const isActive = index === activeCategory;
             return (
-              <StyledIconContainer>
+              <StyledIconContainer
+                key={text}
+                isActive={isActive}
+                onClick={() => onCategorySelect(index)}
+              >
                 <StyledImg src={imgSrc} alt={text} />
                 <StyledText>{text}</StyledText>
               </StyledIconContainer>
