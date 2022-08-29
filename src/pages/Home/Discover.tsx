@@ -59,15 +59,33 @@ const StyledImg = styled.img`
 const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
   const [activeCategory, setActiveCategory] = useState(0);
   const [questions, setQuestions] = useState([]);
-  const newQuestions = async () => {
-    const newQuestions = await fetchQuizQuestions(10, Category.SPORTS);
+  const newQuestions = async (categoryId: any) => {
+    const newQuestions = await fetchQuizQuestions(10, categoryId);
     setQuestions(newQuestions);
     console.log({ newQuestions });
   };
 
   const onCategorySelect = (num: number) => {
     setActiveCategory(num);
-    newQuestions();
+    const getCategoryid = () => {
+      switch (num) {
+        case 0:
+          return 25;
+        case 1:
+          return 21;
+        case 2:
+          return 9;
+        case 3:
+          return 27;
+        case 4:
+          return 22;
+        case 5:
+          return 28;
+        case 6:
+          return 20;
+      }
+    };
+    newQuestions(getCategoryid());
   };
   return (
     <StyledDiscovery>
