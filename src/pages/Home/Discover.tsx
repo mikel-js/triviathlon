@@ -3,10 +3,19 @@ import styled from 'styled-components';
 import { Category, Difficulty, fetchQuizQuestions } from '../../API';
 import { color } from '../../constants';
 
+type questionObject = {
+  category: string;
+  correct_answer: string;
+  difficulty: string;
+  incorrect_answers: string[];
+  question: string;
+  type: string;
+};
+
 type Level = {
-  easy: [];
-  medium: [];
-  hard: [];
+  easy?: questionObject;
+  medium?: questionObject;
+  hard?: questionObject;
 };
 
 const StyledDiscovery = styled.div`
@@ -64,11 +73,7 @@ const StyledImg = styled.img`
 
 const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
   const [activeCategory, setActiveCategory] = useState(0);
-  const [questions, setQuestions] = useState<Level>({
-    easy: [],
-    medium: [],
-    hard: [],
-  });
+  const [questions, setQuestions] = useState<Level>({});
 
   const newQuestions = async (categoryId: any) => {
     const randomNumber = Math.floor(Math.random() * 10) + 1;
@@ -96,8 +101,8 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
     console.log({ questionsArray });
   };
 
-  const getQuestion = (difficulty: Difficulty): [] => {
-    return questions[difficulty];
+  const getQuestion = (difficulty: Difficulty): questionObject | void => {
+    if (questions) return questions[difficulty];
   };
 
   useEffect(() => {
@@ -126,6 +131,15 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
     };
     newQuestions(getCategoryid());
   };
+
+  const renderQuestions = (difficulty: Difficulty) => {
+    const question = getQuestion(difficulty);
+    return (
+      <div>
+        <h1>{question?.question}</h1>
+      </div>
+    );
+  };
   return (
     <StyledDiscovery>
       <StyledLeftSection>
@@ -146,7 +160,11 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
           })}
         </StyledCategories>
       </StyledLeftSection>
-      <StyledRightSection>Right</StyledRightSection>
+      <StyledRightSection>
+        {renderQuestions(Difficulty.EASY)}
+        {renderQuestions(Difficulty.MEDIUM)}
+        {renderQuestions(Difficulty.HARD)}
+      </StyledRightSection>
     </StyledDiscovery>
   );
 };
