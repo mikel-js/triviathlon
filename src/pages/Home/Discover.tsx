@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Category, fetchQuizQuestions } from '../../API';
+import { Category, Difficulty, fetchQuizQuestions } from '../../API';
 import { color } from '../../constants';
+
+type Level = {
+  easy: [];
+  medium: [];
+  hard: [];
+};
 
 const StyledDiscovery = styled.div`
   min-height: 100%;
@@ -58,16 +64,44 @@ const StyledImg = styled.img`
 
 const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
   const [activeCategory, setActiveCategory] = useState(0);
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState<Level>({
+    easy: [],
+    medium: [],
+    hard: [],
+  });
 
   const newQuestions = async (categoryId: any) => {
-    const newQuestions = await fetchQuizQuestions(10, categoryId);
-    setQuestions(newQuestions);
-    console.log({ newQuestions });
+    const randomNumber = Math.floor(Math.random() * 10) + 1;
+    const easyQuestions = await fetchQuizQuestions(
+      10,
+      categoryId,
+      Difficulty.EASY
+    );
+    const mediumQuestions = await fetchQuizQuestions(
+      10,
+      categoryId,
+      Difficulty.MEDIUM
+    );
+    const hardQuestions = await fetchQuizQuestions(
+      10,
+      categoryId,
+      Difficulty.HARD
+    );
+    const questionsArray = {
+      easy: easyQuestions[randomNumber],
+      medium: mediumQuestions[randomNumber],
+      hard: hardQuestions[randomNumber],
+    };
+    setQuestions(questionsArray);
+    console.log({ questionsArray });
+  };
+
+  const getQuestion = (difficulty: Difficulty): [] => {
+    return questions[difficulty];
   };
 
   useEffect(() => {
-    newQuestions(25);
+    newQuestions(11);
   }, []);
 
   const onCategorySelect = (num: number) => {
@@ -75,7 +109,7 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
     const getCategoryid = () => {
       switch (num) {
         case 0:
-          return 25;
+          return 11;
         case 1:
           return 21;
         case 2:
