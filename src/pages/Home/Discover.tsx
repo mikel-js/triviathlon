@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Category, fetchQuizQuestions } from '../../API';
 import { color } from '../../constants';
@@ -59,11 +59,16 @@ const StyledImg = styled.img`
 const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
   const [activeCategory, setActiveCategory] = useState(0);
   const [questions, setQuestions] = useState([]);
+
   const newQuestions = async (categoryId: any) => {
     const newQuestions = await fetchQuizQuestions(10, categoryId);
     setQuestions(newQuestions);
     console.log({ newQuestions });
   };
+
+  useEffect(() => {
+    newQuestions(25);
+  }, []);
 
   const onCategorySelect = (num: number) => {
     setActiveCategory(num);
