@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Category, Difficulty, fetchQuizQuestions } from '../../API';
 import { color } from '../../constants';
+import Question from './Question';
 
-type questionObject = {
+export type questionObject = {
   category: string;
   correct_answer: string;
   difficulty: string;
@@ -13,7 +14,7 @@ type questionObject = {
   choices: [];
 };
 
-type Level = {
+export type Level = {
   easy?: questionObject;
   medium?: questionObject;
   hard?: questionObject;
@@ -102,10 +103,6 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
     console.log({ questionsArray });
   };
 
-  const getQuestion = (difficulty: Difficulty): questionObject | void => {
-    if (questions) return questions[difficulty];
-  };
-
   useEffect(() => {
     newQuestions(11);
   }, []);
@@ -133,17 +130,6 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
     newQuestions(getCategoryid());
   };
 
-  const renderQuestions = (difficulty: Difficulty) => {
-    const question = getQuestion(difficulty);
-    return (
-      <div>
-        <h1 dangerouslySetInnerHTML={{ __html: question?.question || '' }}></h1>
-        {question?.choices.map((choice) => (
-          <p>{choice}</p>
-        ))}
-      </div>
-    );
-  };
   return (
     <StyledDiscovery>
       <StyledLeftSection>
@@ -165,9 +151,9 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
         </StyledCategories>
       </StyledLeftSection>
       <StyledRightSection>
-        {renderQuestions(Difficulty.EASY)}
-        {renderQuestions(Difficulty.MEDIUM)}
-        {renderQuestions(Difficulty.HARD)}
+        <Question difficulty={Difficulty.EASY} questions={questions} />
+        <Question difficulty={Difficulty.MEDIUM} questions={questions} />
+        <Question difficulty={Difficulty.HARD} questions={questions} />
       </StyledRightSection>
     </StyledDiscovery>
   );
