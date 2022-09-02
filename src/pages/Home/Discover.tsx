@@ -10,6 +10,7 @@ type questionObject = {
   incorrect_answers: string[];
   question: string;
   type: string;
+  choices: [];
 };
 
 type Level = {
@@ -136,7 +137,10 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
     const question = getQuestion(difficulty);
     return (
       <div>
-        <h1>{question?.question}</h1>
+        <h1 dangerouslySetInnerHTML={{ __html: question?.question || '' }}></h1>
+        {question?.choices.map((choice) => (
+          <p>{choice}</p>
+        ))}
       </div>
     );
   };
