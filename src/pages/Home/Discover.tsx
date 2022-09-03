@@ -142,7 +142,7 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
   return (
     <StyledDiscovery>
       <StyledLeftSection>
-        <h1>Get a glimpse of the trivia</h1>
+        <h1>Get a glimpse!</h1>
         <StyledCategories>
           {icons.map(({ imgSrc, text }, index) => {
             const isActive = index === activeCategory;

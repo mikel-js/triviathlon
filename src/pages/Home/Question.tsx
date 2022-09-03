@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Difficulty } from '../../API';
 import { Level, questionObject } from './Discover';
@@ -23,12 +23,22 @@ const StyledQuestionContainer = styled.div<{ bgColor: string }>`
   ${({ bgColor }) => `background: ${bgColor};  border: solid 1px ${bgColor};`}
 `;
 
-const StyledChoice = styled.p``;
+const StyledChoice = styled.p<{ isActive: boolean }>`
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 10px;
+  &:hover {
+    background: #ffe6ff;
+  }
+
+  ${({ isActive }) => isActive && 'background: #ffccff;'}
+`;
 
 const Question: React.FC<{
   difficulty: Difficulty;
   questions: Level;
 }> = ({ difficulty, questions }) => {
+  const [activeChoice, setActiveChoice] = useState(1);
   const getQuestion = (difficulty: Difficulty): questionObject | void => {
     if (questions) return questions[difficulty];
   };
@@ -46,8 +56,11 @@ const Question: React.FC<{
       <StyledQuestionContainer bgColor={cardColorMap[difficulty]}>
         <h1>{difficulty.toUpperCase()}</h1>
         <h2 dangerouslySetInnerHTML={{ __html: question?.question || '' }}></h2>
-        {question?.choices.map((choice) => (
-          <p dangerouslySetInnerHTML={{ __html: choice || '' }} />
+        {question?.choices.map((choice, index) => (
+          <StyledChoice
+            dangerouslySetInnerHTML={{ __html: choice || '' }}
+            isActive={index === activeChoice}
+          />
         ))}
       </StyledQuestionContainer>
     </StyledQuestion>
