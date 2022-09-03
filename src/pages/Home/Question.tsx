@@ -23,6 +23,8 @@ const StyledQuestionContainer = styled.div<{ bgColor: string }>`
   ${({ bgColor }) => `background: ${bgColor};  border: solid 1px ${bgColor};`}
 `;
 
+const StyledChoice = styled.p``;
+
 const Question: React.FC<{
   difficulty: Difficulty;
   questions: Level;
@@ -45,7 +47,7 @@ const Question: React.FC<{
         <h1>{difficulty.toUpperCase()}</h1>
         <h2 dangerouslySetInnerHTML={{ __html: question?.question || '' }}></h2>
         {question?.choices.map((choice) => (
-          <p>{choice}</p>
+          <p dangerouslySetInnerHTML={{ __html: choice || '' }} />
         ))}
       </StyledQuestionContainer>
     </StyledQuestion>
