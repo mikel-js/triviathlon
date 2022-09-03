@@ -12,13 +12,15 @@ const StyledQuestion = styled.div`
 const StyledQuestionContainer = styled.div<{ bgColor: string }>`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
   max-width: 75%;
   padding: 2em;
-  border: solid;
+  box-shadow: -1px 9px 18px 0px rgba(0, 0, 0, 0.75);
   border-radius: 20px;
   margin: 1em 0;
 
-  ${({ bgColor }) => `background-color: ${bgColor}`}
+  ${({ bgColor }) => `background: ${bgColor};  border: solid 1px ${bgColor};`}
 `;
 
 const Question: React.FC<{
@@ -30,9 +32,9 @@ const Question: React.FC<{
   };
 
   const cardColorMap = {
-    easy: 'green',
-    medium: 'yellow',
-    hard: 'red',
+    easy: '#99ffcc',
+    medium: '#FFF4A3',
+    hard: '#ff6666',
   };
 
   const question = getQuestion(difficulty);

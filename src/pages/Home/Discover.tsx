@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { PacmanLoader } from 'react-spinners';
 import styled from 'styled-components';
 import { Category, Difficulty, fetchQuizQuestions } from '../../API';
 import { color } from '../../constants';
 import Question from './Question';
+import Modal from '../Shared/Modal';
 
 export type questionObject = {
   category: string;
@@ -39,6 +41,8 @@ const StyledLeftSection = styled.div`
 `;
 
 const StyledRightSection = styled.div`
+  display: flex;
+  flex-direction: column;
   background-color: ${color.PINK1};
 `;
 
@@ -76,8 +80,11 @@ const StyledImg = styled.img`
 const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
   const [activeCategory, setActiveCategory] = useState(0);
   const [questions, setQuestions] = useState<Level>({});
+  let [loading, setLoading] = useState(false);
 
   const newQuestions = async (categoryId: any) => {
+    setLoading(true);
+    setQuestions({});
     const randomNumber = Math.floor(Math.random() * 10) + 1;
     const easyQuestions = await fetchQuizQuestions(
       10,
@@ -94,13 +101,15 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
       categoryId,
       Difficulty.HARD
     );
+    if (easyQuestions && mediumQuestions && hardQuestions) {
+      setLoading(false);
+    }
     const questionsArray = {
       easy: easyQuestions[randomNumber],
       medium: mediumQuestions[randomNumber],
       hard: hardQuestions[randomNumber],
     };
     setQuestions(questionsArray);
-    console.log({ questionsArray });
   };
 
   useEffect(() => {
@@ -134,6 +143,11 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
     <StyledDiscovery>
       <StyledLeftSection>
         <h1>Get a glimpse of the trivia</h1>
+        {loading ? (
+          <Modal childComp={<PacmanLoader color='yellow' size='50' />} />
+        ) : (
+          'not'
+        )}
         <StyledCategories>
           {icons.map(({ imgSrc, text }, index) => {
             const isActive = index === activeCategory;
