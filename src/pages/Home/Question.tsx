@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Difficulty } from '../../API';
-import { Level, questionObject } from './Discover';
+import { Level, questionObject, userAnswerObject } from './Discover';
 
 const StyledQuestion = styled.div`
   display: flex;
@@ -37,7 +37,8 @@ const StyledChoice = styled.p<{ isActive: boolean }>`
 const Question: React.FC<{
   difficulty: Difficulty;
   questions: Level;
-}> = ({ difficulty, questions }) => {
+  onAnswerSelect: (diff: string, ans: number) => void;
+}> = ({ difficulty, questions, onAnswerSelect }) => {
   const [activeChoice, setActiveChoice] = useState(1);
   const getQuestion = (difficulty: Difficulty): questionObject | void => {
     if (questions) return questions[difficulty];
@@ -51,6 +52,8 @@ const Question: React.FC<{
 
   const question = getQuestion(difficulty);
 
+  const onChoiceClick = (index: number) => setActiveChoice(index);
+
   return (
     <StyledQuestion>
       <StyledQuestionContainer bgColor={cardColorMap[difficulty]}>
@@ -60,6 +63,7 @@ const Question: React.FC<{
           <StyledChoice
             dangerouslySetInnerHTML={{ __html: choice || '' }}
             isActive={index === activeChoice}
+            onClick={() => onAnswerSelect(difficulty, index)}
           />
         ))}
       </StyledQuestionContainer>

@@ -22,6 +22,15 @@ export type Level = {
   hard?: questionObject;
 };
 
+export type answerObject = {
+  diff: number;
+};
+
+export type userAnswerObject = {
+  diff: string;
+  ans: string;
+};
+
 const StyledDiscovery = styled.div`
   min-height: 100%;
   height: 100vh;
@@ -80,7 +89,8 @@ const StyledImg = styled.img`
 const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
   const [activeCategory, setActiveCategory] = useState(0);
   const [questions, setQuestions] = useState<Level>({});
-  let [loading, setLoading] = useState(false);
+  const [userAnswer, setUserAnswer] = useState<{}[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const newQuestions = async (categoryId: any) => {
     setLoading(true);
@@ -139,6 +149,18 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
     newQuestions(getCategoryid());
   };
 
+  const onAnswerSelect = (diff: string, ans: number): void => {
+    const newAnswerObject = { [diff]: ans };
+    const newUser = userAnswer.map((user, index) => {
+      if (Object.keys(user).toString() == diff) {
+        userAnswer.splice(index, 1, { [diff]: ans });
+      }
+      return user;
+    });
+    setUserAnswer([...userAnswer, newAnswerObject]);
+    console.log({ newUser });
+  };
+
   return (
     <StyledDiscovery>
       <StyledLeftSection>
@@ -160,9 +182,21 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
         </StyledCategories>
       </StyledLeftSection>
       <StyledRightSection>
-        <Question difficulty={Difficulty.EASY} questions={questions} />
-        <Question difficulty={Difficulty.MEDIUM} questions={questions} />
-        <Question difficulty={Difficulty.HARD} questions={questions} />
+        <Question
+          difficulty={Difficulty.EASY}
+          questions={questions}
+          onAnswerSelect={onAnswerSelect}
+        />
+        <Question
+          difficulty={Difficulty.MEDIUM}
+          questions={questions}
+          onAnswerSelect={onAnswerSelect}
+        />
+        <Question
+          difficulty={Difficulty.HARD}
+          questions={questions}
+          onAnswerSelect={onAnswerSelect}
+        />
       </StyledRightSection>
       {loading && (
         <Modal childComp={<PacmanLoader color='yellow' size='50' />} />
