@@ -38,8 +38,8 @@ const Question: React.FC<{
   difficulty: Difficulty;
   questions: Level;
   onAnswerSelect: (diff: string, ans: number) => void;
-}> = ({ difficulty, questions, onAnswerSelect }) => {
-  const [activeChoice, setActiveChoice] = useState(1);
+  activeAnswer: number;
+}> = ({ difficulty, questions, onAnswerSelect, activeAnswer }) => {
   const getQuestion = (difficulty: Difficulty): questionObject | void => {
     if (questions) return questions[difficulty];
   };
@@ -52,8 +52,6 @@ const Question: React.FC<{
 
   const question = getQuestion(difficulty);
 
-  const onChoiceClick = (index: number) => setActiveChoice(index);
-
   return (
     <StyledQuestion>
       <StyledQuestionContainer bgColor={cardColorMap[difficulty]}>
@@ -62,7 +60,7 @@ const Question: React.FC<{
         {question?.choices.map((choice, index) => (
           <StyledChoice
             dangerouslySetInnerHTML={{ __html: choice || '' }}
-            isActive={index === activeChoice}
+            isActive={index === activeAnswer}
             onClick={() => onAnswerSelect(difficulty, index)}
           />
         ))}
