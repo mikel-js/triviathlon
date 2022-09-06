@@ -89,7 +89,7 @@ const StyledImg = styled.img`
 const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
   const [activeCategory, setActiveCategory] = useState(0);
   const [questions, setQuestions] = useState<Level>({});
-  const [userAnswer, setUserAnswer] = useState<{}[]>([]);
+  const [userAnswer, setUserAnswer] = useState<number[]>([-1, -1, -1]);
   const [loading, setLoading] = useState(false);
 
   const newQuestions = async (categoryId: any) => {
@@ -150,15 +150,18 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
   };
 
   const onAnswerSelect = (diff: string, ans: number): void => {
-    const newAnswerObject = { [diff]: ans };
-    const newUser = userAnswer.map((user, index) => {
-      if (Object.keys(user).toString() == diff) {
-        userAnswer.splice(index, 1, { [diff]: ans });
-      }
-      return user;
-    });
-    setUserAnswer([...userAnswer, newAnswerObject]);
-    console.log({ newUser });
+    const userAnswerClone = [...userAnswer];
+    if (diff === 'easy') {
+      userAnswerClone[0] = ans;
+      console.log(Object.values(userAnswerClone[0]));
+    }
+    if (diff === 'medium') {
+      userAnswerClone[1] = ans;
+    }
+    if (diff === 'hard') {
+      userAnswerClone[2] = ans;
+    }
+    setUserAnswer(userAnswerClone);
   };
 
   return (
@@ -186,16 +189,19 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
           difficulty={Difficulty.EASY}
           questions={questions}
           onAnswerSelect={onAnswerSelect}
+          activeAnswer={userAnswer[0]}
         />
         <Question
           difficulty={Difficulty.MEDIUM}
           questions={questions}
           onAnswerSelect={onAnswerSelect}
+          activeAnswer={userAnswer[1]}
         />
         <Question
           difficulty={Difficulty.HARD}
           questions={questions}
           onAnswerSelect={onAnswerSelect}
+          activeAnswer={userAnswer[2]}
         />
       </StyledRightSection>
       {loading && (
