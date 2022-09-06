@@ -131,7 +131,7 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
     const getCategoryid = () => {
       switch (num) {
         case 0:
-          return 11;
+          return 25;
         case 1:
           return 21;
         case 2:

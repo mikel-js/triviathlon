@@ -2,7 +2,7 @@ import general_knowledge from '../../assets/images/general_knowledge.jpg';
 import basketball from '../../assets/images/basketball.jpg';
 import dogs from '../../assets/images/dogs.jpg';
 import geography from '../../assets/images/geography.jpg';
-import artIcon from '../../assets/icons/art.png';
+import moviesIcon from '../../assets/icons/movies.png';
 import basketballIcon from '../../assets/icons/basketball.png';
 import bookIcon from '../../assets/icons/book.png';
 import dogIcon from '../../assets/icons/dog.png';
@@ -17,7 +17,7 @@ export const images = [
     text: 'Knowledge is power',
   },
   { imgSrc: basketball, title: 'Sports', text: 'Play like a champion' },
-  { imgSrc: dogs, title: 'Animals', text: 'We all love animals' },
+  { imgSrc: dogs, title: 'Animals', text: 'Animal lover?' },
   {
     imgSrc: geography,
     title: 'Geography',
@@ -29,7 +29,7 @@ export const images = [
     text: 'Knowledge is power',
   },
   { imgSrc: basketball, title: 'Sports', text: 'Play like a champion' },
-  { imgSrc: dogs, title: 'Animals', text: 'We all love animals' },
+  { imgSrc: dogs, title: 'Animals', text: 'Animal lover?' },
   {
     imgSrc: geography,
     title: 'Geography',
@@ -38,7 +38,7 @@ export const images = [
 ];
 
 export const icons = [
-  { imgSrc: artIcon, text: 'Arts' },
+  { imgSrc: moviesIcon, text: 'Movies' },
   { imgSrc: basketballIcon, text: 'Sports' },
   { imgSrc: bookIcon, text: 'General Knowledge' },
   { imgSrc: dogIcon, text: 'Animals' },
