@@ -17,11 +17,13 @@ const StyledHeading = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 48px;
+  position: relative;
 `;
 
 const StyledH1 = styled.h1`
+  position: absolute;
+  bottom: 1em;
   font-size: 117px;
-  margin-top: 2em;
   font-weight: 400;
 `;
 
