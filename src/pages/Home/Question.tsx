@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Difficulty } from '../../API';
-import { Level, questionObject, userAnswerObject } from './Discover';
+import { Level, questionObject } from './Discover';
 
 const StyledQuestion = styled.div`
   display: flex;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { PacmanLoader } from 'react-spinners';
 import styled from 'styled-components';
-import { Category, Difficulty, fetchQuizQuestions } from '../../API';
+import { Difficulty, fetchQuizQuestions } from '../../API';
 import { color } from '../../constants';
 import Question from './Question';
 import Modal from '../Shared/Modal';
