@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { PacmanLoader } from 'react-spinners';
+import { HashLoader } from 'react-spinners';
 import styled from 'styled-components';
 import { Difficulty, fetchQuizQuestions } from '../../API';
 import { color } from '../../constants';
@@ -53,6 +53,7 @@ const StyledRightSection = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${color.PINK1};
+  padding: 48px 0;
 `;
 
 const StyledCategories = styled.div`
@@ -131,7 +132,7 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
     const getCategoryid = () => {
       switch (num) {
         case 0:
-          return 25;
+          return 23;
         case 1:
           return 21;
         case 2:
@@ -205,7 +206,7 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
         />
       </StyledRightSection>
       {loading && (
-        <Modal childComp={<PacmanLoader color='yellow' size='50' />} />
+        <Modal childComp={<HashLoader color='yellow' size='150' />} />
       )}
     </StyledDiscovery>
   );
