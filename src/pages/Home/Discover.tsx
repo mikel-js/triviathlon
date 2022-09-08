@@ -87,11 +87,16 @@ const StyledImg = styled.img`
   width: 4.8rem;
 `;
 
+const StyledButton = styled.button``;
+
+const StyledQuestion = styled(Question)``;
+
 const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
   const [activeCategory, setActiveCategory] = useState(0);
   const [questions, setQuestions] = useState<Level>({});
   const [userAnswer, setUserAnswer] = useState<number[]>([-1, -1, -1]);
   const [loading, setLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const newQuestions = async (categoryId: any) => {
     setLoading(true);
@@ -119,6 +124,7 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
         medium: mediumQuestions[randomNumber],
         hard: hardQuestions[randomNumber],
       };
+
       setQuestions(questionsArray);
     }
   };
@@ -165,6 +171,8 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
     setUserAnswer(userAnswerClone);
   };
 
+  const onSubmit = () => setIsSubmitted(true);
+
   return (
     <StyledDiscovery>
       <StyledLeftSection>
@@ -186,25 +194,39 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
         </StyledCategories>
       </StyledLeftSection>
       <StyledRightSection>
-        <Question
+        <StyledQuestion
           difficulty={Difficulty.EASY}
           questions={questions}
           onAnswerSelect={onAnswerSelect}
           activeAnswer={userAnswer[0]}
+          isUserAnswerCorrect={
+            questions.easy?.choices[userAnswer[0]] ===
+            questions.easy?.correct_answer
+          }
         />
-        <Question
+        <StyledQuestion
           difficulty={Difficulty.MEDIUM}
           questions={questions}
           onAnswerSelect={onAnswerSelect}
           activeAnswer={userAnswer[1]}
+          isUserAnswerCorrect={
+            questions.medium?.choices[userAnswer[1]] ===
+            questions.medium?.correct_answer
+          }
         />
-        <Question
+        <StyledQuestion
           difficulty={Difficulty.HARD}
           questions={questions}
           onAnswerSelect={onAnswerSelect}
           activeAnswer={userAnswer[2]}
+          isUserAnswerCorrect={
+            questions.hard?.choices[userAnswer[2]] ===
+            questions.hard?.correct_answer
+          }
         />
+        <StyledButton>Check</StyledButton>
       </StyledRightSection>
+
       {loading && (
         <Modal childComp={<HashLoader color='yellow' size='150' />} />
       )}

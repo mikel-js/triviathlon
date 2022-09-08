@@ -39,6 +39,7 @@ const Question: React.FC<{
   questions: Level;
   onAnswerSelect: (diff: string, ans: number) => void;
   activeAnswer: number;
+  isUserAnswerCorrect?: boolean;
 }> = ({ difficulty, questions, onAnswerSelect, activeAnswer }) => {
   const getQuestion = (difficulty: Difficulty): questionObject | void => {
     if (questions) return questions[difficulty];

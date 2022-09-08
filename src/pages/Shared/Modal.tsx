@@ -20,7 +20,6 @@ const StyledModal = styled.div`
 
 const Modal: React.FC<ParentCompProps> = (props) => {
   const { childComp } = props;
-  console.log({ childComp });
   return <StyledModal>{childComp}</StyledModal>;
 };
 
