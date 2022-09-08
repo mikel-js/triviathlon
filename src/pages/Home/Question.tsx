@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Difficulty } from '../../API';
 import { Level, questionObject } from './Discover';
@@ -23,7 +23,11 @@ const StyledQuestionContainer = styled.div<{ bgColor: string }>`
   ${({ bgColor }) => `background: ${bgColor};  border: solid 1px ${bgColor};`}
 `;
 
-const StyledChoice = styled.p<{ isActive: boolean }>`
+const StyledChoice = styled.p<{
+  isActive: boolean;
+  isAnswerCorrect?: boolean;
+  isSubmitted?: boolean;
+}>`
   cursor: pointer;
   padding: 5px;
   border-radius: 10px;
@@ -32,6 +36,9 @@ const StyledChoice = styled.p<{ isActive: boolean }>`
   }
 
   ${({ isActive }) => isActive && 'background: #ffccff;'}
+
+  ${({ isAnswerCorrect, isSubmitted }) =>
+    isSubmitted && isAnswerCorrect && 'background: green;'}
 `;
 
 const Question: React.FC<{
@@ -39,10 +46,19 @@ const Question: React.FC<{
   questions: Level;
   onAnswerSelect: (diff: string, ans: number) => void;
   activeAnswer: number;
-  isUserAnswerCorrect?: boolean;
-}> = ({ difficulty, questions, onAnswerSelect, activeAnswer }) => {
+  isSubmitted?: boolean;
+}> = ({ difficulty, questions, onAnswerSelect, activeAnswer, isSubmitted }) => {
   const getQuestion = (difficulty: Difficulty): questionObject | void => {
     if (questions) return questions[difficulty];
+  };
+
+  console.log({ questions });
+
+  const [userAnswer, setUserAnswer] = useState(-1);
+
+  const onChoiceClick = (difficulty: string, index: number) => {
+    onAnswerSelect(difficulty, index);
+    setUserAnswer(index);
   };
 
   const cardColorMap = {
@@ -62,7 +78,11 @@ const Question: React.FC<{
           <StyledChoice
             dangerouslySetInnerHTML={{ __html: choice || '' }}
             isActive={index === activeAnswer}
-            onClick={() => onAnswerSelect(difficulty, index)}
+            onClick={() => onChoiceClick(difficulty, index)}
+            isSubmitted={isSubmitted}
+            isAnswerCorrect={
+              question.correct_answer === question.choices[index]
+            }
           />
         ))}
       </StyledQuestionContainer>
