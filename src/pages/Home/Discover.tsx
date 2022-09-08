@@ -199,34 +199,24 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
           questions={questions}
           onAnswerSelect={onAnswerSelect}
           activeAnswer={userAnswer[0]}
-          isUserAnswerCorrect={
-            questions.easy?.choices[userAnswer[0]] ===
-            questions.easy?.correct_answer
-          }
+          isSubmitted={isSubmitted}
         />
         <StyledQuestion
           difficulty={Difficulty.MEDIUM}
           questions={questions}
           onAnswerSelect={onAnswerSelect}
           activeAnswer={userAnswer[1]}
-          isUserAnswerCorrect={
-            questions.medium?.choices[userAnswer[1]] ===
-            questions.medium?.correct_answer
-          }
+          isSubmitted={isSubmitted}
         />
         <StyledQuestion
           difficulty={Difficulty.HARD}
           questions={questions}
           onAnswerSelect={onAnswerSelect}
           activeAnswer={userAnswer[2]}
-          isUserAnswerCorrect={
-            questions.hard?.choices[userAnswer[2]] ===
-            questions.hard?.correct_answer
-          }
+          isSubmitted={isSubmitted}
         />
-        <StyledButton>Check</StyledButton>
+        <StyledButton onClick={onSubmit}>Check</StyledButton>
       </StyledRightSection>
-
       {loading && (
         <Modal childComp={<HashLoader color='yellow' size='150' />} />
       )}

@@ -1,3 +1,5 @@
+import { shuffleArray } from './utils';
+
 export type Question = {
   category: string;
   correct_answer: string;
@@ -26,6 +28,8 @@ export const fetchQuizQuestions = async (
   category: Category,
   difficulty?: Difficulty
 ) => {
+  const randomNumber = Math.floor(Math.random() * 2);
+
   const endpoint = difficulty
     ? `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple&category=${category}`
     : `https://opentdb.com/api.php?amount=${amount}&type=multiple&category=${category}`;
@@ -33,6 +37,9 @@ export const fetchQuizQuestions = async (
   const data = await (await fetch(endpoint)).json();
   return data.results.map((question: Question) => ({
     ...question,
-    choices: [...question.incorrect_answers, question.correct_answer],
+    choices: shuffleArray([
+      ...question.incorrect_answers,
+      question.correct_answer,
+    ]),
   }));
 };
