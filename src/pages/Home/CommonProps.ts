@@ -2,7 +2,7 @@ import general_knowledge from '../../assets/images/general_knowledge.jpg';
 import basketball from '../../assets/images/basketball.jpg';
 import dogs from '../../assets/images/dogs.jpg';
 import geography from '../../assets/images/geography.jpg';
-import moviesIcon from '../../assets/icons/movies.png';
+import historyIcon from '../../assets/icons/history.png';
 import basketballIcon from '../../assets/icons/basketball.png';
 import bookIcon from '../../assets/icons/book.png';
 import dogIcon from '../../assets/icons/dog.png';
@@ -38,7 +38,7 @@ export const images = [
 ];
 
 export const icons = [
-  { imgSrc: moviesIcon, text: 'Movies' },
+  { imgSrc: historyIcon, text: 'History' },
   { imgSrc: basketballIcon, text: 'Sports' },
   { imgSrc: bookIcon, text: 'General Knowledge' },
   { imgSrc: dogIcon, text: 'Animals' },
