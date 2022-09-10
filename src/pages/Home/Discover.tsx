@@ -154,6 +154,8 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
       }
     };
     newQuestions(getCategoryid());
+    setUserAnswer([-1, -1, -1]);
+    setIsSubmitted(false);
   };
 
   const onAnswerSelect = (diff: string, ans: number): void => {
