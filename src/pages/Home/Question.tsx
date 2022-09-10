@@ -25,8 +25,9 @@ const StyledQuestionContainer = styled.div<{ bgColor: string }>`
 
 const StyledChoice = styled.p<{
   isActive: boolean;
-  isAnswerCorrect?: boolean;
+  isCorrectChoice?: boolean;
   isSubmitted?: boolean;
+  userAnswer?: boolean;
 }>`
   cursor: pointer;
   padding: 5px;
@@ -38,8 +39,14 @@ const StyledChoice = styled.p<{
   ${({ isActive }) => isActive && 'background: #ffccff;'}
   ${({ isSubmitted }) => isSubmitted && ' pointer-events: none;'}
 
-  ${({ isAnswerCorrect, isSubmitted }) =>
-    isSubmitted && isAnswerCorrect && 'background: green;'}
+  ${({ isCorrectChoice, isSubmitted }) =>
+    isSubmitted && isCorrectChoice && 'background: #e6fff2;'}
+
+  ${({ isSubmitted, isCorrectChoice, isActive }) =>
+    isSubmitted && !isCorrectChoice && isActive && 'background: #ff8c66;'}
+
+  ${({ isSubmitted, userAnswer, isCorrectChoice }) =>
+    isSubmitted && userAnswer && isCorrectChoice && 'background: #8cff66;'}
 `;
 
 const Question: React.FC<{
@@ -52,15 +59,14 @@ const Question: React.FC<{
   const getQuestion = (difficulty: Difficulty): questionObject | void => {
     if (questions) return questions[difficulty];
   };
-
-  console.log({ questions });
+  const question = getQuestion(difficulty);
 
   const [userAnswer, setUserAnswer] = useState(-1);
 
   const onChoiceClick = (difficulty: string, index: number) => {
     onAnswerSelect(difficulty, index);
     setUserAnswer(index);
-    console.log(userAnswer);
+    console.log(question?.choices[index]);
   };
 
   const cardColorMap = {
@@ -69,24 +75,27 @@ const Question: React.FC<{
     hard: '#ff6666',
   };
 
-  const question = getQuestion(difficulty);
-
   return (
     <StyledQuestion>
       <StyledQuestionContainer bgColor={cardColorMap[difficulty]}>
         <h1>{difficulty.toUpperCase()}</h1>
         <h2 dangerouslySetInnerHTML={{ __html: question?.question || '' }}></h2>
-        {question?.choices.map((choice, index) => (
-          <StyledChoice
-            dangerouslySetInnerHTML={{ __html: choice || '' }}
-            isActive={index === activeAnswer}
-            onClick={() => onChoiceClick(difficulty, index)}
-            isSubmitted={isSubmitted}
-            isAnswerCorrect={
-              question.correct_answer === question.choices[index]
-            }
-          />
-        ))}
+        {question?.choices.map((choice, index) => {
+          const isCorrectChoice =
+            question.correct_answer === question.choices[index];
+          return (
+            <StyledChoice
+              dangerouslySetInnerHTML={{ __html: choice || '' }}
+              isActive={index === activeAnswer}
+              onClick={() => onChoiceClick(difficulty, index)}
+              isSubmitted={isSubmitted}
+              userAnswer={
+                question.choices[userAnswer] === question.correct_answer
+              }
+              isCorrectChoice={isCorrectChoice}
+            />
+          );
+        })}
       </StyledQuestionContainer>
     </StyledQuestion>
   );
