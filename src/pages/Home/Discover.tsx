@@ -87,7 +87,24 @@ const StyledImg = styled.img`
   width: 4.8rem;
 `;
 
-const StyledButton = styled.button``;
+const StyledButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const StyledButton = styled.button<{ isSubmitted?: boolean }>`
+  cursor: pointer;
+  background-color: #99ffff;
+  border: none;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+  padding: 5px 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  ${({ isSubmitted }) => isSubmitted && 'pointer-events: none;'}
+`;
 
 const StyledQuestion = styled(Question)``;
 
@@ -217,7 +234,15 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
           activeAnswer={userAnswer[2]}
           isSubmitted={isSubmitted}
         />
-        <StyledButton onClick={onSubmit}>Check</StyledButton>
+        <StyledButtonContainer>
+          <StyledButton
+            onClick={onSubmit}
+            disabled={isSubmitted}
+            isSubmitted={isSubmitted}
+          >
+            Submit
+          </StyledButton>
+        </StyledButtonContainer>
       </StyledRightSection>
       {loading && (
         <Modal childComp={<HashLoader color='yellow' size='150' />} />
