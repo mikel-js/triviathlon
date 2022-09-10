@@ -36,6 +36,7 @@ const StyledChoice = styled.p<{
   }
 
   ${({ isActive }) => isActive && 'background: #ffccff;'}
+  ${({ isSubmitted }) => isSubmitted && ' pointer-events: none;'}
 
   ${({ isAnswerCorrect, isSubmitted }) =>
     isSubmitted && isAnswerCorrect && 'background: green;'}
