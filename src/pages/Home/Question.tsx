@@ -54,11 +54,11 @@ const Question: React.FC<{
 
   console.log({ questions });
 
-  const [userAnswer, setUserAnswer] = useState(-1);
+  // const [userAnswer, setUserAnswer] = useState(-1);
 
   const onChoiceClick = (difficulty: string, index: number) => {
     onAnswerSelect(difficulty, index);
-    setUserAnswer(index);
+    // setUserAnswer(index);
   };
 
   const cardColorMap = {

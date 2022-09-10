@@ -28,8 +28,6 @@ export const fetchQuizQuestions = async (
   category: Category,
   difficulty?: Difficulty
 ) => {
-  const randomNumber = Math.floor(Math.random() * 2);
-
   const endpoint = difficulty
     ? `https://opentdb.com/api.php?amount=${amount}&difficulty=${difficulty}&type=multiple&category=${category}`
     : `https://opentdb.com/api.php?amount=${amount}&type=multiple&category=${category}`;
