@@ -23,7 +23,7 @@ const StyledHeading = styled.div`
 const StyledH1 = styled.h1`
   position: absolute;
   bottom: 1em;
-  font-size: 117px;
+  font-size: 4em;
   font-weight: 400;
 `;
 

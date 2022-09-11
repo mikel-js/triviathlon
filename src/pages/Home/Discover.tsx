@@ -41,19 +41,19 @@ const StyledDiscovery = styled.div`
   }
 `;
 
-const StyledLeftSection = styled.div`
+const StyledLeftSectionContainer = styled.div`
   background-color: ${color.BLUE1};
-  padding: 48px;
+`;
 
-  > h1 {
-  }
+const StyledLeftSection = styled.div`
+  margin: 2em;
 `;
 
 const StyledRightSection = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${color.PINK1};
-  padding: 48px 0;
+  padding: 2em 0;
 `;
 
 const StyledCategories = styled.div`
@@ -64,6 +64,7 @@ const StyledCategories = styled.div`
 
 const StyledIconContainer = styled.div<{ isActive: boolean }>`
   display: flex;
+  align-items: center;
   padding: 1vw 2.5vw;
   cursor: pointer;
   border-radius: 20px;
@@ -78,13 +79,13 @@ const StyledIconContainer = styled.div<{ isActive: boolean }>`
 `;
 
 const StyledText = styled.p`
-  font-size: 60px;
+  font-size: 2.5em;
   margin-left: 24px;
 `;
 
 const StyledImg = styled.img`
   aspect-ratio: 1 / 1;
-  width: 4.8rem;
+  width: 3.5em;
 `;
 
 const StyledButtonContainer = styled.div`
@@ -106,7 +107,14 @@ const StyledButton = styled.button<{ isSubmitted?: boolean }>`
   ${({ isSubmitted }) => isSubmitted && 'pointer-events: none;'}
 `;
 
-const StyledQuestion = styled(Question)``;
+const StyledQuestion = styled(Question)`
+  > h1 {
+    font-size: 1.5em;
+  }
+  > h2 {
+    font-size: 1.2em;
+  }
+`;
 
 const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
   const [activeCategory, setActiveCategory] = useState(0);
@@ -194,24 +202,26 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
 
   return (
     <StyledDiscovery>
-      <StyledLeftSection>
-        <h1>Get a glimpse!</h1>
-        <StyledCategories>
-          {icons.map(({ imgSrc, text }, index) => {
-            const isActive = index === activeCategory;
-            return (
-              <StyledIconContainer
-                key={text}
-                isActive={isActive}
-                onClick={() => onCategorySelect(index)}
-              >
-                <StyledImg src={imgSrc} alt={text} />
-                <StyledText>{text}</StyledText>
-              </StyledIconContainer>
-            );
-          })}
-        </StyledCategories>
-      </StyledLeftSection>
+      <StyledLeftSectionContainer>
+        <StyledLeftSection>
+          <h1>Get a glimpse!</h1>
+          <StyledCategories>
+            {icons.map(({ imgSrc, text }, index) => {
+              const isActive = index === activeCategory;
+              return (
+                <StyledIconContainer
+                  key={text}
+                  isActive={isActive}
+                  onClick={() => onCategorySelect(index)}
+                >
+                  <StyledImg src={imgSrc} alt={text} />
+                  <StyledText>{text}</StyledText>
+                </StyledIconContainer>
+              );
+            })}
+          </StyledCategories>
+        </StyledLeftSection>
+      </StyledLeftSectionContainer>
       <StyledRightSection>
         <StyledQuestion
           difficulty={Difficulty.EASY}
