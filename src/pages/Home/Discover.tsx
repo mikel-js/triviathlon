@@ -35,6 +35,7 @@ const StyledDiscovery = styled.div`
   min-height: 100%;
   height: 100vh;
   display: flex;
+  flex-direction: column;
 
   > div {
     flex: 1;

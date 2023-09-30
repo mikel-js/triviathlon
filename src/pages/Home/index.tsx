@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Marquee from 'react-fast-marquee';
 import styled from 'styled-components';
-import { color } from '../../constants';
+import { breakpoint, color } from '../../constants';
 import Cards from './Cards';
 import { images, icons } from './CommonProps';
 import triviathlonLogo from '../../assets/images/triviathlon.png';
@@ -12,19 +12,28 @@ const Section = styled.div``;
 const StyledHeading = styled.div`
   background-color: ${color.ORANGE1};
   width: 100%;
-  height: 50vh;
+  height: 15vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 48px;
   position: relative;
+
+  @media (min-width: ${breakpoint.md}) {
+    height: 40vh;
+  }
 `;
 
 const StyledH1 = styled.h1`
   position: absolute;
   bottom: 1em;
-  font-size: 4em;
+  font-size: 2em;
   font-weight: 400;
+  text-align: center;
+
+  @media (min-width: ${breakpoint.md}) {
+    font-size: 4em;
+  }
 `;
 
 const StyledContent = styled.div`
@@ -38,9 +47,14 @@ const StyledTitle = styled.h1`
   font-weight: 400;
 `;
 
+const StyledImgContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 const StyledImg = styled.img`
-  height: 150px;
-  width: 500px;
+  width: 100%;
+  min-width: 300px;
 `;
 
 const index = () => {
@@ -48,7 +62,10 @@ const index = () => {
     <Fragment>
       <Section>
         <StyledHeading>
-          <StyledImg src={triviathlonLogo} />
+          <StyledImgContainer>
+            <StyledImg src={triviathlonLogo} />
+          </StyledImgContainer>
+
           <StyledH1>Test your mental endurance</StyledH1>
         </StyledHeading>
         <StyledContent>
