@@ -66,7 +66,7 @@ const StyledCategories = styled.div`
 const StyledIconContainer = styled.div<{ isActive: boolean }>`
   display: flex;
   align-items: center;
-  padding: 1vw 2.5vw;
+  padding: 0.75rem 3rem;
   cursor: pointer;
   border-radius: 20px;
 

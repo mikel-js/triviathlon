@@ -30,6 +30,7 @@ const StyledH1 = styled.h1`
   font-size: 2rem;
   font-weight: 400;
   text-align: center;
+  margin-top: 1rem;
 
   @media (min-width: ${breakpoint.md}) {
     font-size: 4rem;
@@ -48,7 +49,7 @@ const StyledTitle = styled.h1`
 
   @media (min-width: ${breakpoint.md}) {
     font-size: 4rem;
-    padding: 8em 0 2em 0;
+    padding: 8rem 0 2rem 0;
   }
 `;
 
