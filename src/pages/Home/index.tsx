@@ -26,13 +26,13 @@ const StyledHeading = styled.div`
 
 const StyledH1 = styled.h1`
   position: absolute;
-  bottom: 1em;
-  font-size: 2em;
+  bottom: 1rem;
+  font-size: 2rem;
   font-weight: 400;
   text-align: center;
 
   @media (min-width: ${breakpoint.md}) {
-    font-size: 4em;
+    font-size: 4rem;
   }
 `;
 
@@ -42,9 +42,14 @@ const StyledContent = styled.div`
 `;
 
 const StyledTitle = styled.h1`
-  padding: 108px 0 36px 0;
-  font-size: 72px;
+  padding: 1em 0;
+  font-size: 2rem;
   font-weight: 400;
+
+  @media (min-width: ${breakpoint.md}) {
+    font-size: 4rem;
+    padding: 8em 0 2em 0;
+  }
 `;
 
 const StyledImgContainer = styled.div`
@@ -65,7 +70,6 @@ const index = () => {
           <StyledImgContainer>
             <StyledImg src={triviathlonLogo} />
           </StyledImgContainer>
-
           <StyledH1>Test your mental endurance</StyledH1>
         </StyledHeading>
         <StyledContent>

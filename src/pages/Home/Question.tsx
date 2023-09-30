@@ -8,14 +8,14 @@ const StyledQuestion = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 4em;
+  margin: 0 4rem;
 `;
 const StyledQuestionContainer = styled.div<{ bgColor: string }>`
   display: flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: 1em;
+  padding: 1rem;
   box-shadow: -1px 9px 18px 0px rgba(0, 0, 0, 0.75);
   border-radius: 20px;
   margin: 1em 0;
@@ -23,11 +23,11 @@ const StyledQuestionContainer = styled.div<{ bgColor: string }>`
   ${({ bgColor }) => `background: ${bgColor};  border: solid 1px ${bgColor};`}
 
   > h1 {
-    font-size: 1.5em;
+    font-size: 1.5rem;
   }
 
   > h2 {
-    font-size: 1.2em;
+    font-size: 1.2rem;
   }
 `;
 

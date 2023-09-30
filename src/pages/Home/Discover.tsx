@@ -47,7 +47,7 @@ const StyledLeftSectionContainer = styled.div`
 `;
 
 const StyledLeftSection = styled.div`
-  margin: 2em;
+  margin: 2rem;
 `;
 
 const StyledRightSection = styled.div`
@@ -60,7 +60,7 @@ const StyledRightSection = styled.div`
 const StyledCategories = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 2em;
+  margin-top: 2rem;
 `;
 
 const StyledIconContainer = styled.div<{ isActive: boolean }>`
@@ -80,13 +80,13 @@ const StyledIconContainer = styled.div<{ isActive: boolean }>`
 `;
 
 const StyledText = styled.p`
-  font-size: 2.5em;
+  font-size: 2.5rem;
   margin-left: 24px;
 `;
 
 const StyledImg = styled.img`
   aspect-ratio: 1 / 1;
-  width: 3.5em;
+  width: 3.5rem;
 `;
 
 const StyledButtonContainer = styled.div`
@@ -98,9 +98,9 @@ const StyledButton = styled.button<{ isSubmitted?: boolean }>`
   cursor: pointer;
   background-color: #99ffff;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.5rrem;
   border-radius: 10px;
-  margin-top: 2rem;
+  margin-top: 2rrem;
   padding: 5px 10px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
@@ -110,10 +110,10 @@ const StyledButton = styled.button<{ isSubmitted?: boolean }>`
 
 const StyledQuestion = styled(Question)`
   > h1 {
-    font-size: 1.5em;
+    font-size: 1.5rem;
   }
   > h2 {
-    font-size: 1.2em;
+    font-size: 1.2rem;
   }
 `;
 
