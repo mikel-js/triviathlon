@@ -75,7 +75,7 @@ const index = () => {
         </StyledHeading>
         <StyledContent>
           <StyledTitle>Check this out!</StyledTitle>
-          <Marquee pauseOnHover gradient={false} speed={100}>
+          <Marquee pauseOnHover gradient={false} speed={0}>
             {images.map(({ imgSrc, title, text }) => (
               <Cards imgSrc={imgSrc} title={title} text={text} />
             ))}
