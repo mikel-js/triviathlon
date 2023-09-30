@@ -47,14 +47,13 @@ const StyledChoice = styled.p<{
   ${({ isActive }) => isActive && 'background: #ffccff;'}
   ${({ isSubmitted }) => isSubmitted && 'pointer-events: none;'}
 
-  ${({ isCorrectChoice, isSubmitted }) =>
-    isSubmitted && isCorrectChoice && 'background: #e6fff2;'}
+
 
   ${({ isSubmitted, isCorrectChoice, isActive }) =>
     isSubmitted && !isCorrectChoice && isActive && 'background: #ff8c66;'}
 
-  ${({ isSubmitted, userAnswer, isCorrectChoice }) =>
-    isSubmitted && userAnswer && isCorrectChoice && 'background: #8cff66;'}
+  ${({ isSubmitted, isCorrectChoice }) =>
+    isSubmitted && isCorrectChoice && 'background: #8cff66;'}
 `;
 
 const Question: React.FC<{
