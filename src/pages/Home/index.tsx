@@ -5,6 +5,7 @@ import { images, icons } from './CommonProps';
 import triviathlonLogo from '../../assets/images/triviathlon.png';
 import Discover from './Discover';
 import Carousel from './Carousel';
+import ThemeButtons from './ThemeButtons';
 
 const ThemeContext = createContext<string | null>(null);
 
@@ -51,6 +52,10 @@ const StyledImg = styled.img`
 
 const Home = () => {
   const [theme, setTheme] = useState('original');
+
+  const onThemeChange = (value: string) => {
+    setTheme(value);
+  };
   return (
     <ThemeContext.Provider value={theme}>
       <Section>
@@ -60,6 +65,7 @@ const Home = () => {
           </StyledImgContainer>
           <StyledH1>Test your mental endurance</StyledH1>
         </StyledHeading>
+        <ThemeButtons onThemeChange={onThemeChange} />
         <Carousel images={images} />
       </Section>
       <Discover icons={icons} />
