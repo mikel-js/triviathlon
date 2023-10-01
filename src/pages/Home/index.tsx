@@ -12,7 +12,7 @@ const Section = styled.div``;
 const StyledHeading = styled.div`
   background-color: ${color.ORANGE1};
   width: 100%;
-  height: 15vh;
+  height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
