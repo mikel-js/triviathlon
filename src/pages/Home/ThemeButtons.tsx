@@ -1,6 +1,6 @@
-import { createContext, useState } from 'react';
-import styled from 'styled-components';
-import { color } from '../../constants';
+import { createContext, useContext, useState } from 'react';
+import styled, { ThemeContext } from 'styled-components';
+import { breakpoint, color } from '../../constants';
 
 const Section = styled.div`
   position: absolute;
@@ -13,6 +13,11 @@ const Section = styled.div`
 const StyledButton = styled.button`
   border: none;
   background-color: ${color.ORANGE1};
+  font-size: 1rem;
+
+  @media (min-width: ${breakpoint.md}) {
+    font-size: 1.5rem;
+  }
 `;
 
 type ThemebuttonsProps = {
@@ -22,10 +27,11 @@ type ThemebuttonsProps = {
 const themes = ['Default', 'Dark Mode', 'Light'];
 
 const ThemeButtons: React.FC<ThemebuttonsProps> = ({ onThemeChange }) => {
+  const theme = useContext(ThemeContext);
   return (
     <Section>
-      {themes.map((theme) => (
-        <StyledButton>{theme}</StyledButton>
+      {themes.map((themeStr) => (
+        <StyledButton>{themeStr}</StyledButton>
       ))}
     </Section>
   );
