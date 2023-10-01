@@ -3,6 +3,7 @@ import Marquee from 'react-fast-marquee';
 import styled from 'styled-components';
 import Cards from './Cards';
 import { breakpoint, color } from '../../constants';
+import { useTheme } from '../../contexts/ThemeContext';
 
 export type imageObject = {
   imgSrc: string;
@@ -27,6 +28,7 @@ const StyledTitle = styled.h1`
 `;
 
 const Carousel = ({ images }: { images: imageObject[] }) => {
+  const { theme } = useTheme();
   return (
     <StyledContent>
       <StyledTitle>Check this out!</StyledTitle>

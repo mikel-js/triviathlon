@@ -1,5 +1,6 @@
 import React, { lazy } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 const Home = lazy(() => import('./pages/Home/index'));
 
@@ -15,9 +16,9 @@ const CustomRouter = () => {
 
 function App() {
   return (
-    <div className='App'>
+    <ThemeProvider>
       <CustomRouter />
-    </div>
+    </ThemeProvider>
   );
 }
 

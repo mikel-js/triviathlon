@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { breakpoint, color } from '../../constants';
 import { images, icons } from './CommonProps';
@@ -6,11 +6,11 @@ import triviathlonLogo from '../../assets/images/triviathlon.png';
 import Discover from './Discover';
 import Carousel from './Carousel';
 import ThemeButtons from './ThemeButtons';
-import { ThemeProvider } from '../../contexts/ThemeContext';
+import { Theme, ThemeProvider, useTheme } from '../../contexts/ThemeContext';
 
 const Section = styled.div``;
 
-const StyledHeading = styled.div`
+const StyledHeading = styled.div<{ theme: Theme }>`
   background-color: ${color.ORANGE1};
   width: 100%;
   height: 17rem;
@@ -23,6 +23,9 @@ const StyledHeading = styled.div`
   @media (min-width: ${breakpoint.md}) {
     height: 40rem;
   }
+
+  ${({ theme }) =>
+    theme === 'Dark Mode' && `background-color: ${color.PURPLE1};`}
 `;
 
 const StyledH1 = styled.h1`
@@ -50,10 +53,12 @@ const StyledImg = styled.img`
 `;
 
 const Home = () => {
+  const { theme } = useTheme();
   return (
-    <ThemeProvider>
+    <Fragment>
       <Section>
-        <StyledHeading>
+        <h1>{theme}</h1>
+        <StyledHeading theme={theme}>
           <StyledImgContainer>
             <StyledImg src={triviathlonLogo} />
           </StyledImgContainer>
@@ -63,7 +68,7 @@ const Home = () => {
         <Carousel images={images} />
       </Section>
       <Discover icons={icons} />
-    </ThemeProvider>
+    </Fragment>
   );
 };
 

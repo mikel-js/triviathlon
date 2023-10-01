@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import styled from 'styled-components';
 import { breakpoint, color } from '../../constants';
 import { Theme, useTheme } from '../../contexts/ThemeContext';
 
@@ -26,14 +26,14 @@ const StyledButton = styled.button<{ isActive: boolean }>`
 const themes: Theme[] = ['Default', 'Dark Mode', 'Fresh'];
 
 const ThemeButtons: React.FC = () => {
-  const themeProps = useTheme();
-  const onButtonClick = (val: Theme) => themeProps?.setTheme(val);
+  const { theme, setTheme } = useTheme();
+  const onButtonClick = (val: Theme) => setTheme(val);
   return (
     <Section>
       {themes.map((themeStr) => (
         <StyledButton
           onClick={() => onButtonClick(themeStr)}
-          isActive={themeProps?.theme === themeStr}
+          isActive={theme === themeStr}
           key={themeStr}
         >
           {themeStr}

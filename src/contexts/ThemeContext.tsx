@@ -7,7 +7,7 @@ export type ThemeContextType = {
   setTheme: (theme: Theme) => void;
 };
 
-const ThemeContext = createContext<ThemeContextType | undefined>({
+const ThemeContext = createContext<ThemeContextType>({
   theme: 'Default',
   setTheme: () => {},
 });
