@@ -41,7 +41,6 @@ const StyledDiscovery = styled.div`
   }
 
   @media (min-width: ${breakpoint.md}) {
-    height: 100vh;
     flex-direction: row;
   }
 `;
