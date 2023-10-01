@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react';
-import Marquee from 'react-fast-marquee';
 import styled from 'styled-components';
 import { breakpoint, color } from '../../constants';
-import Cards from './Cards';
 import { images, icons } from './CommonProps';
 import triviathlonLogo from '../../assets/images/triviathlon.png';
 import Discover from './Discover';
+import Carousel from './Carousel';
 
 const Section = styled.div``;
 
@@ -38,22 +37,6 @@ const StyledH1 = styled.h1`
   }
 `;
 
-const StyledContent = styled.div`
-  background-color: ${color.YELLOW1};
-  text-align: center;
-`;
-
-const StyledTitle = styled.h1`
-  padding: 1em 0;
-  font-size: 2rem;
-  font-weight: 400;
-
-  @media (min-width: ${breakpoint.md}) {
-    font-size: 4rem;
-    padding: 4rem 0 2rem 0;
-  }
-`;
-
 const StyledImgContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -74,14 +57,7 @@ const index = () => {
           </StyledImgContainer>
           <StyledH1>Test your mental endurance</StyledH1>
         </StyledHeading>
-        <StyledContent>
-          <StyledTitle>Check this out!</StyledTitle>
-          <Marquee pauseOnHover gradient={false} speed={100}>
-            {images.map(({ imgSrc, title, text }) => (
-              <Cards imgSrc={imgSrc} title={title} text={text} />
-            ))}
-          </Marquee>
-        </StyledContent>
+        <Carousel images={images} />
       </Section>
       <Discover icons={icons} />
     </Fragment>
