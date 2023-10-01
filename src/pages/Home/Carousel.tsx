@@ -31,8 +31,8 @@ const Carousel = ({ images }: { images: imageObject[] }) => {
     <StyledContent>
       <StyledTitle>Check this out!</StyledTitle>
       <Marquee pauseOnHover gradient={false} speed={100}>
-        {images.map(({ imgSrc, title, text }) => (
-          <Cards imgSrc={imgSrc} title={title} text={text} />
+        {images.map(({ imgSrc, title, text }, i) => (
+          <Cards imgSrc={imgSrc} title={title} text={text} key={i} />
         ))}
       </Marquee>
     </StyledContent>

@@ -78,7 +78,6 @@ const Question: React.FC<{
   const onChoiceClick = (difficulty: string, index: number) => {
     onAnswerSelect(difficulty, index);
     setUserAnswer(index);
-    console.log(question?.choices[index]);
   };
 
   const cardColorMap = {
@@ -105,6 +104,7 @@ const Question: React.FC<{
                 question.choices[userAnswer] === question.correct_answer
               }
               isCorrectChoice={isCorrectChoice}
+              key={index}
             />
           );
         })}
