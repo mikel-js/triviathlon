@@ -35,11 +35,12 @@ const StyledCard = styled.div`
 `;
 
 const StyledImg = styled.img`
-  aspect-ratio: 1 / 1;
+  object-fit: cover;
   width: 35vw;
-
+  height: 35vh;
   @media (min-width: ${breakpoint.md}) {
     width: 25vw;
+    height: 25vw;
   }
 `;
 
