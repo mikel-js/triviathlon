@@ -2,13 +2,18 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Difficulty } from '../../API';
 import { Level, questionObject } from './Discover';
+import { breakpoint } from '../../constants';
 
 const StyledQuestion = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 4rem;
+  margin: 0 2rem;
+
+  @media (min-width: ${breakpoint.md}) {
+    margin: 0 4rem;
+  }
 `;
 const StyledQuestionContainer = styled.div<{ bgColor: string }>`
   display: flex;

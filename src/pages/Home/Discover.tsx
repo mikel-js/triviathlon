@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { HashLoader } from 'react-spinners';
 import styled from 'styled-components';
 import { Difficulty, fetchQuizQuestions } from '../../API';
-import { color } from '../../constants';
+import { breakpoint, color } from '../../constants';
 import Question from './Question';
 import Modal from '../Shared/Modal';
 
@@ -33,12 +33,15 @@ export type userAnswerObject = {
 
 const StyledDiscovery = styled.div`
   min-height: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
 
   > div {
     flex: 1;
+  }
+
+  @media (min-width: ${breakpoint.md}) {
+    height: 100vh;
   }
 `;
 
@@ -54,7 +57,7 @@ const StyledRightSection = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${color.PINK1};
-  padding: 2em 0;
+  padding: 2rem 0;
 `;
 
 const StyledCategories = styled.div`
@@ -66,7 +69,7 @@ const StyledCategories = styled.div`
 const StyledIconContainer = styled.div<{ isActive: boolean }>`
   display: flex;
   align-items: center;
-  padding: 0.75rem 3rem;
+  padding: 0.25rem 1.5rem;
   cursor: pointer;
   border-radius: 20px;
 
@@ -77,16 +80,27 @@ const StyledIconContainer = styled.div<{ isActive: boolean }>`
 
   ${({ isActive }) =>
     isActive && `background-color: ${color.RED1}; padding-left: 3.5vw;`}
+
+  @media (min-width: ${breakpoint.md}) {
+    padding: 0.75rem 3rem;
+  }
 `;
 
 const StyledText = styled.p`
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   margin-left: 24px;
+
+  @media (min-width: ${breakpoint.md}) {
+    font-size: 2.5rem;
+  }
 `;
 
 const StyledImg = styled.img`
   aspect-ratio: 1 / 1;
-  width: 3.5rem;
+  width: 2.5rem;
+  @media (min-width: ${breakpoint.md}) {
+    width: 3.5rem;
+  }
 `;
 
 const StyledButtonContainer = styled.div`
@@ -188,7 +202,6 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
     const userAnswerClone = [...userAnswer];
     if (diff === 'easy') {
       userAnswerClone[0] = ans;
-      console.log(Object.values(userAnswerClone[0]));
     }
     if (diff === 'medium') {
       userAnswerClone[1] = ans;
