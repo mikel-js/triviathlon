@@ -12,7 +12,7 @@ const Section = styled.div``;
 const StyledHeading = styled.div`
   background-color: ${color.ORANGE1};
   width: 100%;
-  height: 20vh;
+  height: 17rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +20,7 @@ const StyledHeading = styled.div`
   position: relative;
 
   @media (min-width: ${breakpoint.md}) {
-    height: 40vh;
+    height: 40rem;
   }
 `;
 
@@ -34,6 +34,7 @@ const StyledH1 = styled.h1`
 
   @media (min-width: ${breakpoint.md}) {
     font-size: 4rem;
+    bottom: 4rem;
   }
 `;
 
@@ -49,7 +50,7 @@ const StyledTitle = styled.h1`
 
   @media (min-width: ${breakpoint.md}) {
     font-size: 4rem;
-    padding: 8rem 0 2rem 0;
+    padding: 4rem 0 2rem 0;
   }
 `;
 
