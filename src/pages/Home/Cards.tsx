@@ -11,7 +11,7 @@ const StyledCard = styled.div`
   justify-content: space-between;
   align-items: center;
   flex: 1;
-  min-height: 14rem;
+  min-width: 11rem;
 
   h1 {
     font-size: 1rem;
@@ -36,12 +36,17 @@ const StyledCard = styled.div`
 
 const StyledImg = styled.img`
   aspect-ratio: 1 / 1;
-  width: 25vw;
+  width: 35vw;
+
+  @media (min-width: ${breakpoint.md}) {
+    width: 25vw;
+  }
 `;
 
 const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 1rem;
 `;
 const StyledCardContainer = styled.div`
   display: flex;
