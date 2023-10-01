@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { breakpoint, color } from '../../constants';
-import { useTheme } from '../../contexts/ThemeContext';
+import { Theme, useTheme } from '../../contexts/ThemeContext';
 
 const Section = styled.div`
   position: absolute;
@@ -11,7 +11,7 @@ const Section = styled.div`
   gap: 1rem;
 `;
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<{ isActive: boolean }>`
   border: none;
   background-color: ${color.ORANGE1};
   font-size: 1rem;
@@ -19,17 +19,25 @@ const StyledButton = styled.button`
   @media (min-width: ${breakpoint.md}) {
     font-size: 1.5rem;
   }
+
+  ${({ isActive }) => isActive && 'text-decoration: underline'}
 `;
 
-const themes = ['Default', 'Dark Mode', 'Light'];
+const themes: Theme[] = ['Default', 'Dark Mode', 'Fresh'];
 
 const ThemeButtons: React.FC = () => {
-  const pro = useTheme();
-  console.log({ pro });
+  const themeProps = useTheme();
+  const onButtonClick = (val: Theme) => themeProps?.setTheme(val);
   return (
     <Section>
       {themes.map((themeStr) => (
-        <StyledButton key={themeStr}>{themeStr}</StyledButton>
+        <StyledButton
+          onClick={() => onButtonClick(themeStr)}
+          isActive={themeProps?.theme === themeStr}
+          key={themeStr}
+        >
+          {themeStr}
+        </StyledButton>
       ))}
     </Section>
   );
