@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { breakpoint, color } from '../../constants';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const Section = styled.div`
   position: absolute;
@@ -20,18 +21,15 @@ const StyledButton = styled.button`
   }
 `;
 
-type ThemebuttonsProps = {
-  onThemeChange: (value: string) => void; // Define a function prop
-};
-
 const themes = ['Default', 'Dark Mode', 'Light'];
 
-const ThemeButtons: React.FC<ThemebuttonsProps> = ({ onThemeChange }) => {
-  const theme = useContext(ThemeContext);
+const ThemeButtons: React.FC = () => {
+  const pro = useTheme();
+  console.log({ pro });
   return (
     <Section>
       {themes.map((themeStr) => (
-        <StyledButton>{themeStr}</StyledButton>
+        <StyledButton key={themeStr}>{themeStr}</StyledButton>
       ))}
     </Section>
   );

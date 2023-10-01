@@ -12,6 +12,10 @@ const ThemeContext = createContext<ThemeContextType | undefined>({
   setTheme: () => {},
 });
 
+type ThemebuttonsProps = {
+  setTheme: (value: string) => void;
+};
+
 export const ThemeProvider: React.FC<React.PropsWithChildren<{}>> = ({
   children,
 }) => {

@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { breakpoint, color } from '../../constants';
 import { images, icons } from './CommonProps';
@@ -6,8 +6,7 @@ import triviathlonLogo from '../../assets/images/triviathlon.png';
 import Discover from './Discover';
 import Carousel from './Carousel';
 import ThemeButtons from './ThemeButtons';
-
-const ThemeContext = createContext<string | null>(null);
+import { ThemeProvider } from '../../contexts/ThemeContext';
 
 const Section = styled.div``;
 
@@ -51,13 +50,8 @@ const StyledImg = styled.img`
 `;
 
 const Home = () => {
-  const [theme, setTheme] = useState('original');
-
-  const onThemeChange = (value: string) => {
-    setTheme(value);
-  };
   return (
-    <ThemeContext.Provider value={theme}>
+    <ThemeProvider>
       <Section>
         <StyledHeading>
           <StyledImgContainer>
@@ -65,11 +59,11 @@ const Home = () => {
           </StyledImgContainer>
           <StyledH1>Test your mental endurance</StyledH1>
         </StyledHeading>
-        <ThemeButtons onThemeChange={onThemeChange} />
+        <ThemeButtons />
         <Carousel images={images} />
       </Section>
       <Discover icons={icons} />
-    </ThemeContext.Provider>
+    </ThemeProvider>
   );
 };
 
