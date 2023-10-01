@@ -1,10 +1,12 @@
-import React, { Fragment } from 'react';
+import React, { createContext, useContext, useState, Fragment } from 'react';
 import styled from 'styled-components';
 import { breakpoint, color } from '../../constants';
 import { images, icons } from './CommonProps';
 import triviathlonLogo from '../../assets/images/triviathlon.png';
 import Discover from './Discover';
 import Carousel from './Carousel';
+
+const ThemeContext = createContext<string | null>(null);
 
 const Section = styled.div``;
 
@@ -47,9 +49,10 @@ const StyledImg = styled.img`
   min-width: 300px;
 `;
 
-const index = () => {
+const Home = () => {
+  const [theme, setTheme] = useState('original');
   return (
-    <Fragment>
+    <ThemeContext.Provider value={theme}>
       <Section>
         <StyledHeading>
           <StyledImgContainer>
@@ -60,8 +63,8 @@ const index = () => {
         <Carousel images={images} />
       </Section>
       <Discover icons={icons} />
-    </Fragment>
+    </ThemeContext.Provider>
   );
 };
 
-export default index;
+export default Home;
