@@ -15,4 +15,7 @@ export const color = {
   PINK1: '#ffcccc',
   RED1: '#ff4d4d',
   RED2: '#ffb3b3',
+  BLACK1: '#000',
+  WHITE1: '#fff',
+  GRAY1: '#424242',
 };

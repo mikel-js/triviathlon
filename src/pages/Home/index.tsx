@@ -8,6 +8,11 @@ import Carousel from './Carousel';
 import ThemeButtons from './ThemeButtons';
 import { Theme, ThemeProvider, useTheme } from '../../contexts/ThemeContext';
 
+const StyledHome = styled.div<{ theme: Theme }>`
+  color: #373737;
+  ${({ theme }) => theme === 'Dark Mode' && `color: ${color.WHITE1}!important;`}
+`;
+
 const Section = styled.div``;
 
 const StyledHeading = styled.div<{ theme: Theme }>`
@@ -25,7 +30,7 @@ const StyledHeading = styled.div<{ theme: Theme }>`
   }
 
   ${({ theme }) =>
-    theme === 'Dark Mode' && `background-color: ${color.PURPLE1};`}
+    theme === 'Dark Mode' && `background-color: ${color.BLACK1};`}
 `;
 
 const StyledH1 = styled.h1`
@@ -45,6 +50,9 @@ const StyledH1 = styled.h1`
 const StyledImgContainer = styled.div`
   display: flex;
   justify-content: center;
+
+  ${({ theme }) =>
+    theme === 'Dark Mode' && `background-color: ${color.ORANGE1};`}
 `;
 
 const StyledImg = styled.img`
@@ -55,11 +63,10 @@ const StyledImg = styled.img`
 const Home = () => {
   const { theme } = useTheme();
   return (
-    <Fragment>
-      <Section>
-        <h1>{theme}</h1>
+    <StyledHome theme={theme}>
+      <Section theme={theme}>
         <StyledHeading theme={theme}>
-          <StyledImgContainer>
+          <StyledImgContainer theme={theme}>
             <StyledImg src={triviathlonLogo} />
           </StyledImgContainer>
           <StyledH1>Test your mental endurance</StyledH1>
@@ -68,7 +75,7 @@ const Home = () => {
         <Carousel images={images} />
       </Section>
       <Discover icons={icons} />
-    </Fragment>
+    </StyledHome>
   );
 };
 
