@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, Fragment } from 'react';
+import { createContext, useState } from 'react';
 import styled from 'styled-components';
 import { breakpoint, color } from '../../constants';
 import { images, icons } from './CommonProps';
