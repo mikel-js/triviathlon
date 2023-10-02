@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Difficulty } from '../../API';
 import { Level, questionObject } from './Discover';
 import { breakpoint, color } from '../../constants';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const StyledQuestion = styled.div`
   display: flex;
@@ -75,6 +76,8 @@ const Question: React.FC<{
 
   const [userAnswer, setUserAnswer] = useState(-1);
 
+  const { theme } = useTheme();
+
   const onChoiceClick = (difficulty: string, index: number) => {
     onAnswerSelect(difficulty, index);
     setUserAnswer(index);
@@ -92,9 +95,11 @@ const Question: React.FC<{
     hard: color.RED4,
   };
 
+  const colorTheme = theme === 'Dark Mode' ? darkCardColorMap : cardColorMap;
+
   return (
     <StyledQuestion>
-      <StyledQuestionContainer bgColor={cardColorMap[difficulty]}>
+      <StyledQuestionContainer bgColor={colorTheme[difficulty]}>
         <h1>{difficulty.toUpperCase()}</h1>
         <h2 dangerouslySetInnerHTML={{ __html: question?.question || '' }}></h2>
         {question?.choices.map((choice, index) => {
