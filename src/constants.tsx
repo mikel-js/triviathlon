@@ -8,9 +8,11 @@ export const breakpoint = {
 
 export const color = {
   ORANGE1: '#f58a41',
+  ORANGE2: '#E2703A',
   YELLOW1: '#f1eb9f',
   PURPLE1: '#cc99ff',
   PURPLE2: '#3700b3',
+  PURPLE3: '#37306B',
   BROWN1: '#dfbe9f',
   BLUE1: '#b3ccff',
   PINK1: '#ffcccc',
