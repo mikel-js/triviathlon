@@ -30,7 +30,8 @@ const StyledHeading = styled.div<{ theme: Theme }>`
   }
 
   ${({ theme }) =>
-    theme === 'Dark Mode' && `background-color: ${color.BLACK1};`}
+    theme === 'Dark Mode' &&
+    'background-image: linear-gradient(rgba(8,35,55,0),#082337);'}
 `;
 
 const StyledH1 = styled.h1`

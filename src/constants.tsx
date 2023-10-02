@@ -19,4 +19,5 @@ export const color = {
   BLACK1: '#000',
   WHITE1: '#fff',
   GRAY1: '#424242',
+  DARK_BLUE1: '#082337',
 };

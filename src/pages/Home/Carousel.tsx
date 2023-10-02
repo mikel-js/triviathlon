@@ -14,6 +14,9 @@ export type imageObject = {
 const StyledContent = styled.div`
   background-color: ${color.YELLOW1};
   text-align: center;
+
+  ${({ theme }) =>
+    theme === 'Dark Mode' && `background-color: ${color.DARK_BLUE1};`}
 `;
 
 const StyledTitle = styled.h1`
@@ -30,7 +33,7 @@ const StyledTitle = styled.h1`
 const Carousel = ({ images }: { images: imageObject[] }) => {
   const { theme } = useTheme();
   return (
-    <StyledContent>
+    <StyledContent theme={theme}>
       <StyledTitle>Check this out!</StyledTitle>
       <Marquee pauseOnHover gradient={false} speed={100}>
         {images.map(({ imgSrc, title, text }, i) => (
