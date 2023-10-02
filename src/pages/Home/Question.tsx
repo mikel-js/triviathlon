@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Difficulty } from '../../API';
 import { Level, questionObject } from './Discover';
-import { breakpoint } from '../../constants';
+import { breakpoint, color } from '../../constants';
 
 const StyledQuestion = styled.div`
   display: flex;
@@ -81,9 +81,15 @@ const Question: React.FC<{
   };
 
   const cardColorMap = {
-    easy: '#99ffcc',
-    medium: '#FFF4A3',
-    hard: '#ff6666',
+    easy: color.GREEN1,
+    medium: color.YELLOW2,
+    hard: color.RED3,
+  };
+
+  const darkCardColorMap = {
+    easy: color.GREEN2,
+    medium: color.YELLOW3,
+    hard: color.RED4,
   };
 
   return (

@@ -37,7 +37,7 @@ const StyledCard = styled.div`
 const StyledImg = styled.img`
   object-fit: cover;
   width: 35vw;
-  height: 35vh;
+  aspect-ratio: 1;
   @media (min-width: ${breakpoint.md}) {
     width: 25vw;
     height: 25vw;
