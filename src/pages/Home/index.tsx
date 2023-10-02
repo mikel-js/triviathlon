@@ -50,14 +50,15 @@ const StyledH1 = styled.h1`
 const StyledImgContainer = styled.div`
   display: flex;
   justify-content: center;
-
-  ${({ theme }) =>
-    theme === 'Dark Mode' && `background-color: ${color.ORANGE1};`}
 `;
 
 const StyledImg = styled.img`
   width: 100%;
   min-width: 300px;
+
+  ${({ theme }) =>
+    theme === 'Dark Mode' &&
+    `filter: invert(100%) sepia(0%) saturate(7499%) hue-rotate(175deg) brightness(100%) contrast(104%);`}
 `;
 
 const Home = () => {
@@ -67,7 +68,7 @@ const Home = () => {
       <Section theme={theme}>
         <StyledHeading theme={theme}>
           <StyledImgContainer theme={theme}>
-            <StyledImg src={triviathlonLogo} />
+            <StyledImg theme={theme} src={triviathlonLogo} />
           </StyledImgContainer>
           <StyledH1>Test your mental endurance</StyledH1>
         </StyledHeading>
