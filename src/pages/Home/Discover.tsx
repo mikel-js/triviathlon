@@ -5,6 +5,7 @@ import { Difficulty, fetchQuizQuestions } from '../../API';
 import { breakpoint, color } from '../../constants';
 import Question from './Question';
 import Modal from '../Shared/Modal';
+import { useTheme } from '../../contexts/ThemeContext';
 
 export type questionObject = {
   category: string;
@@ -47,6 +48,9 @@ const StyledDiscovery = styled.div`
 
 const StyledLeftSectionContainer = styled.div`
   background-color: ${color.BLUE1};
+
+  ${({ theme }) =>
+    theme === 'Dark Mode' && `background-color: ${color.PURPLE3};`}
 `;
 
 const StyledLeftSection = styled.div`
@@ -58,6 +62,9 @@ const StyledRightSection = styled.div`
   flex-direction: column;
   background-color: ${color.PINK1};
   padding: 2rem 0;
+
+  ${({ theme }) =>
+    theme === 'Dark Mode' && `background-color: ${color.ORANGE2};`}
 `;
 
 const StyledCategories = styled.div`
@@ -142,6 +149,7 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
   const [userAnswer, setUserAnswer] = useState<number[]>([-1, -1, -1]);
   const [loading, setLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const { theme } = useTheme();
 
   const newQuestions = async (categoryId: any) => {
     setLoading(true);
@@ -221,7 +229,7 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
 
   return (
     <StyledDiscovery>
-      <StyledLeftSectionContainer>
+      <StyledLeftSectionContainer theme={theme}>
         <StyledLeftSection>
           <h1>Get a glimpse!</h1>
           <StyledCategories>
@@ -241,7 +249,7 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
           </StyledCategories>
         </StyledLeftSection>
       </StyledLeftSectionContainer>
-      <StyledRightSection>
+      <StyledRightSection theme={theme}>
         <StyledQuestion
           difficulty={Difficulty.EASY}
           questions={questions}
