@@ -114,6 +114,7 @@ const StyledImg = styled.img`
 const StyledButtonContainer = styled.div`
   display: flex;
   justify-content: center;
+  gap: 1rem;
 `;
 
 const StyledButton = styled.button<{ isSubmitted?: boolean }>`
@@ -227,6 +228,12 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
 
   const onSubmit = () => setIsSubmitted(true);
 
+  const onQuestionReset = () => {
+    setUserAnswer([-1, -1, -1]);
+    setIsSubmitted(false);
+    newQuestions(11);
+  };
+
   return (
     <StyledDiscovery>
       <StyledLeftSectionContainer theme={theme}>
@@ -279,6 +286,7 @@ const Discover = ({ icons }: { icons: { imgSrc: string; text: string }[] }) => {
           >
             Submit
           </StyledButton>
+          <StyledButton onClick={onQuestionReset}>Reset</StyledButton>
         </StyledButtonContainer>
       </StyledRightSection>
       {loading && (
