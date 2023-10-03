@@ -56,13 +56,9 @@ const StyledChoice = styled.p<{
     ${({ theme }) => theme !== 'Default' && ` color: ${color.BLACK1};`}
   }
 
-  ${({ isActive }) => isActive && 'background: #ffccff;'}
+  ${({ isActive, isSubmitted }) =>
+    isActive && !isSubmitted && 'background: #ffccff;'}
 
-  ${({ isActive, theme }) =>
-    isActive &&
-    theme !== 'Default' &&
-    `color: ${color.BLACK1}; 
-    }`}
   ${({ isSubmitted }) => isSubmitted && 'pointer-events: none;'}
 
 
