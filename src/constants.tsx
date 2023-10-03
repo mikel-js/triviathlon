@@ -18,6 +18,7 @@ export const color = {
   BROWN1: '#dfbe9f',
   BLUE1: '#b3ccff',
   PINK1: '#ffcccc',
+  PINK2: '#ffe6ff',
   RED1: '#ff4d4d',
   RED2: '#3D0000',
   RED3: '#ff6666',

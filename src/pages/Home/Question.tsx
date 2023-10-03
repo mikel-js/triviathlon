@@ -47,10 +47,18 @@ const StyledChoice = styled.p<{
   padding: 5px;
   border-radius: 10px;
   &:hover {
-    background: #ffe6ff;
+    background-color: ${color.PINK2};
+
+    ${({ theme }) => theme !== 'Default' && ` color: ${color.BLACK1};`}
   }
 
   ${({ isActive }) => isActive && 'background: #ffccff;'}
+
+  ${({ isActive, theme }) =>
+    isActive &&
+    theme !== 'Default' &&
+    `color: ${color.BLACK1}; 
+    }`}
   ${({ isSubmitted }) => isSubmitted && 'pointer-events: none;'}
 
 
@@ -115,6 +123,7 @@ const Question: React.FC<{
                 question.choices[userAnswer] === question.correct_answer
               }
               isCorrectChoice={isCorrectChoice}
+              theme={theme}
               key={index}
             />
           );
