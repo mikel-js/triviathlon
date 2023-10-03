@@ -6,7 +6,7 @@ import triviathlonLogo from '../../assets/images/triviathlon.png';
 import Discover from './Discover';
 import Carousel from './Carousel';
 import ThemeButtons from './ThemeButtons';
-import { Theme, ThemeProvider, useTheme } from '../../contexts/ThemeContext';
+import { Theme, useTheme } from '../../contexts/ThemeContext';
 
 const StyledHome = styled.div<{ theme: Theme }>`
   color: #373737;
