@@ -15,6 +15,7 @@ const StyledButton = styled.button<{ isActive: boolean }>`
   border: none;
   background-color: ${color.ORANGE1};
   font-size: 1rem;
+  cursor: pointer;
 
   @media (min-width: ${breakpoint.md}) {
     font-size: 1.5rem;
