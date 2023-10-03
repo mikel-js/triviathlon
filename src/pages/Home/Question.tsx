@@ -37,6 +37,10 @@ const StyledQuestionContainer = styled.div<{ bgColor: string }>`
   }
 `;
 
+const StyledChoiceContainer = styled.div`
+  display: flex;
+`;
+
 const StyledChoice = styled.p<{
   isActive: boolean;
   isCorrectChoice?: boolean;
@@ -66,8 +70,14 @@ const StyledChoice = styled.p<{
   ${({ isSubmitted, isCorrectChoice, isActive }) =>
     isSubmitted && !isCorrectChoice && isActive && 'background: #ff8c66;'}
 
-  ${({ isSubmitted, isCorrectChoice }) =>
-    isSubmitted && isCorrectChoice && 'background: #8cff66;'}
+  ${({ isSubmitted, isCorrectChoice, userAnswer }) =>
+    isSubmitted && isCorrectChoice && !userAnswer && 'background: #8cff66;'}
+`;
+
+const StyledCheck = styled.span`
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: ${color.GREEN3};
 `;
 
 const Question: React.FC<{
@@ -113,19 +123,24 @@ const Question: React.FC<{
         {question?.choices.map((choice, index) => {
           const isCorrectChoice =
             question.correct_answer === question.choices[index];
+          const correctUserAnswer =
+            question.choices[userAnswer] === question.correct_answer;
           return (
-            <StyledChoice
-              dangerouslySetInnerHTML={{ __html: choice || '' }}
-              isActive={index === activeAnswer}
-              onClick={() => onChoiceClick(difficulty, index)}
-              isSubmitted={isSubmitted}
-              userAnswer={
-                question.choices[userAnswer] === question.correct_answer
-              }
-              isCorrectChoice={isCorrectChoice}
-              theme={theme}
-              key={index}
-            />
+            <StyledChoiceContainer>
+              {isCorrectChoice && isSubmitted && correctUserAnswer && (
+                <StyledCheck>🗸</StyledCheck>
+              )}
+              <StyledChoice
+                dangerouslySetInnerHTML={{ __html: choice || '' }}
+                isActive={index === activeAnswer}
+                onClick={() => onChoiceClick(difficulty, index)}
+                isSubmitted={isSubmitted}
+                userAnswer={correctUserAnswer}
+                isCorrectChoice={isCorrectChoice}
+                theme={theme}
+                key={index}
+              />
+            </StyledChoiceContainer>
           );
         })}
       </StyledQuestionContainer>

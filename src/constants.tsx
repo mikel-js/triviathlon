@@ -29,4 +29,5 @@ export const color = {
   DARK_BLUE1: '#082337',
   GREEN1: '#99ffcc',
   GREEN2: '#183D3D',
+  GREEN3: '#8cff66',
 };
