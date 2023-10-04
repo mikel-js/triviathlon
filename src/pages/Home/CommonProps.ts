@@ -47,8 +47,6 @@ export const icons = [
   { imgSrc: geographyIcon, text: 'Geography' },
   { imgSrc: vehicleIcon, text: 'Vehicles' },
   { imgSrc: zeusIcon, text: 'Mythology' },
-  { imgSrc: checkIcon, text: 'Check' },
-  { imgSrc: crossIcon, text: 'Cross' },
 ];
 
 export const commonIcons = { checkIcon, crossIcon };
