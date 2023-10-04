@@ -9,6 +9,8 @@ import dogIcon from '../../assets/icons/dog.png';
 import geographyIcon from '../../assets/icons/navigation.png';
 import vehicleIcon from '../../assets/icons/vehicle.png';
 import zeusIcon from '../../assets/icons/zeus.png';
+import checkIcon from '../../assets/icons/check.png';
+import crossIcon from '../../assets/icons/cross.png';
 
 export const images = [
   {
@@ -45,4 +47,6 @@ export const icons = [
   { imgSrc: geographyIcon, text: 'Geography' },
   { imgSrc: vehicleIcon, text: 'Vehicles' },
   { imgSrc: zeusIcon, text: 'Mythology' },
+  { imgSrc: checkIcon, text: 'Check' },
+  { imgSrc: crossIcon, text: 'Cross' },
 ];
