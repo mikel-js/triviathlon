@@ -4,6 +4,7 @@ import { Difficulty } from '../../API';
 import { Level, questionObject } from './Discover';
 import { breakpoint, color } from '../../constants';
 import { useTheme } from '../../contexts/ThemeContext';
+import { commonIcons } from './CommonProps';
 
 const StyledQuestion = styled.div`
   display: flex;
@@ -39,6 +40,7 @@ const StyledQuestionContainer = styled.div<{ bgColor: string }>`
 
 const StyledChoiceContainer = styled.div`
   display: flex;
+  align-items: center;
 `;
 
 const StyledChoice = styled.p<{
@@ -61,19 +63,13 @@ const StyledChoice = styled.p<{
 
   ${({ isSubmitted }) => isSubmitted && 'pointer-events: none;'}
 
-
-
-  ${({ isSubmitted, isCorrectChoice, isActive }) =>
-    isSubmitted && !isCorrectChoice && isActive && 'background: #ff8c66;'}
-
   ${({ isSubmitted, isCorrectChoice, userAnswer }) =>
     isSubmitted && isCorrectChoice && !userAnswer && 'background: #8cff66;'}
 `;
 
-const StyledCheck = styled.span`
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: ${color.GREEN3};
+const StyledImg = styled.img`
+  width: 1rem;
+  height: 1rem;
 `;
 
 const Question: React.FC<{
@@ -121,14 +117,19 @@ const Question: React.FC<{
             question.correct_answer === question.choices[index];
           const correctUserAnswer =
             question.choices[userAnswer] === question.correct_answer;
+          const isActiveAnswer = index === activeAnswer;
           return (
             <StyledChoiceContainer>
               {isCorrectChoice && isSubmitted && correctUserAnswer && (
-                <StyledCheck>🗸</StyledCheck>
+                <StyledImg src={commonIcons['checkIcon']} />
+              )}
+
+              {isSubmitted && !isCorrectChoice && isActiveAnswer && (
+                <StyledImg src={commonIcons['crossIcon']} />
               )}
               <StyledChoice
                 dangerouslySetInnerHTML={{ __html: choice || '' }}
-                isActive={index === activeAnswer}
+                isActive={isActiveAnswer}
                 onClick={() => onChoiceClick(difficulty, index)}
                 isSubmitted={isSubmitted}
                 userAnswer={correctUserAnswer}

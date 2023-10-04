@@ -51,7 +51,4 @@ export const icons = [
   { imgSrc: crossIcon, text: 'Cross' },
 ];
 
-export const commonIcons = [
-  { imgSrc: checkIcon, text: 'Check' },
-  { imgSrc: crossIcon, text: 'Cross' },
-];
+export const commonIcons = { checkIcon, crossIcon };
