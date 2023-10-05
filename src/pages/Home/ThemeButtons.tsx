@@ -24,7 +24,7 @@ const StyledButton = styled.button<{ isActive: boolean }>`
   ${({ isActive }) => isActive && 'text-decoration: underline'}
 `;
 
-const themes: Theme[] = ['Default', 'Dark Mode', 'Fresh'];
+const themes: Theme[] = ['Default', 'Dark Mode'];
 
 const ThemeButtons: React.FC = () => {
   const { theme, setTheme } = useTheme();
