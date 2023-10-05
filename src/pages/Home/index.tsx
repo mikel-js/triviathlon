@@ -22,7 +22,7 @@ const StyledHeading = styled.div<{ theme: Theme }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 48px;
+  padding-top: 3rem;
   position: relative;
 
   @media (min-width: ${breakpoint.md}) {
@@ -55,7 +55,7 @@ const StyledImgContainer = styled.div`
 
 const StyledImg = styled.img`
   width: 100%;
-  min-width: 300px;
+  min-width: 18.75rem;
 
   ${({ theme }) =>
     theme === 'Dark Mode' &&
