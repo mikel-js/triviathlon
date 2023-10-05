@@ -82,7 +82,8 @@ const StyledIconContainer = styled.div<{ isActive: boolean }>`
 
   &:hover {
     padding-left: 3.5vw;
-    ${({ isActive }) => !isActive && `background-color: ${color.RED2};`}
+    ${({ isActive }) =>
+      !isActive && `background-color: ${color.RED2}; color: ${color.WHITE1}`}
   }
 
   ${({ isActive }) =>
