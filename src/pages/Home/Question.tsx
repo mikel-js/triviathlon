@@ -24,7 +24,7 @@ const StyledQuestionContainer = styled.div<{ bgColor: string }>`
   height: 100%;
   padding: 1rem;
   box-shadow: -1px 9px 18px 0px rgba(0, 0, 0, 0.75);
-  border-radius: 20px;
+  border-radius: 1.25rem;
   margin: 1em 0;
 
   ${({ bgColor }) => `background: ${bgColor};  border: solid 1px ${bgColor};`}

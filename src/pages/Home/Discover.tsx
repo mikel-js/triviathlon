@@ -78,7 +78,7 @@ const StyledIconContainer = styled.div<{ isActive: boolean }>`
   align-items: center;
   padding: 0.25rem 1.5rem;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 1.25rem;
 
   &:hover {
     padding-left: 3.5vw;
